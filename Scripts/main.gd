@@ -25,7 +25,7 @@ func new_game() -> void:
 	$StartTimer.start()
 	$Music.play()
 	
-	$HUD.show_message("GET_READY_MESSAGE")
+	$HUD.show_message("Ready Yourself!")
 	
 	yield($StartTimer, "timeout")
 	$Player.set_physics_process(true)

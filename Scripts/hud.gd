@@ -22,7 +22,7 @@ func show_message(message: String) -> void:
 
 
 func show_game_over() -> void:
-	show_message("GAME_OVER_MESSAGE")
+	show_message("Game Over!")
 	yield($MessageTimer, "timeout")
 	message_label.text = "Dodge the Creeps"
 	message_label.show()

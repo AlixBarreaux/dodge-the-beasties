@@ -18,7 +18,7 @@ margin_bottom = 154.0
 focus_neighbour_top = NodePath("../QuitToDesktopButton")
 focus_neighbour_bottom = NodePath("../QuitToDesktopButton")
 custom_fonts/font = SubResource( 1 )
-text = "CREDITS"
+text = "Credits"
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false,

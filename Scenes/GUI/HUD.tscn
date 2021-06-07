@@ -67,7 +67,7 @@ margin_bottom = 90.0
 focus_neighbour_top = NodePath("../QuitToDesktopButton")
 focus_neighbour_bottom = NodePath("../QuitToDesktopButton")
 custom_fonts/font = SubResource( 1 )
-text = "PLAY"
+text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
 }

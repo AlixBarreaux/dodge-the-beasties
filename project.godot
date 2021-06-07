@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Reference",
+"base": "Button",
 "class": "QuitButton",
 "language": "GDScript",
 "path": "res://Scripts/quit_to_desktop_button.gd"
@@ -32,6 +32,10 @@ config/windows_native_icon="res://Miscellaneous/icon.ico"
 [audio]
 
 default_bus_layout="res://Miscellaneous/default_bus_layout.tres"
+
+[autoload]
+
+Settings="*res://Autoloads/settings.gd"
 
 [display]
 
@@ -75,7 +79,7 @@ move_down={
 
 [locale]
 
-translations=PoolStringArray( "res://Translations/gui_translations.en_US.translation", "res://Translations/gui_translations.es_ES.translation", "res://Translations/gui_translations.fr_FR.translation" )
+translations=PoolStringArray( "res://Translations/GUI_Translations/fr/gui_translations_fr.po" )
 
 [physics]
 
