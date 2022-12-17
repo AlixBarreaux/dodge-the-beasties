@@ -162,6 +162,7 @@ valign = 1
 autowrap = true
 
 [node name="PauseMenu" parent="." instance=ExtResource( 8 )]
+visible = false
 
 [connection signal="pressed" from="MainMenu/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]

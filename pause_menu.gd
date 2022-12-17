@@ -36,6 +36,7 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 
 
 func _initialize() -> void:
+	self.show()
 	self.hide_menu()
 	return
 
