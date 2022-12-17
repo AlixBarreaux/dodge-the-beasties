@@ -2,7 +2,7 @@ extends Node
 class_name Main
 
 
-############################### DECLARE VARIABLES ##############################
+# ----------------------------- DECLARE VARIABLES -----------------------------
 
 
 export var mob_scene: PackedScene = null
@@ -26,7 +26,7 @@ onready var start_timer: Timer = $StartTimer
 onready var player_starting_position: Position2D = $PlayerStartingPosition
 
 
-################################# RUN THE CODE #################################
+# ---------------------------------- RUN CODE ---------------------------------
 
 
 func _ready() -> void:
@@ -36,7 +36,7 @@ func _ready() -> void:
 	return
 
 
-############################### DECLARE FUNCTIONS ##############################
+# ----------------------------- DECLARE FUNCTIONS -----------------------------
 
 
 func _initialize_signals() -> void:
