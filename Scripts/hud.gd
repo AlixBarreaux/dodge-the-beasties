@@ -42,7 +42,7 @@ func on_main_menu_requested() -> void:
 
 
 func update_score(score: int) -> void:
-	score_label.text = str(score)
+	score_label.text = "Score:  " + str(score)
 	return
 
 

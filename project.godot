@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "Panel",
 "class": "GameOverMenu",
 "language": "GDScript",
-"path": "res://game_over_menu.gd.gd"
+"path": "res://Scripts/game_over_menu.gd.gd"
 }, {
 "base": "Control",
 "class": "MainMenu",
 "language": "GDScript",
-"path": "res://main_menu.gd"
+"path": "res://Scripts/main_menu.gd"
 }, {
 "base": "Button",
 "class": "QuitButton",
