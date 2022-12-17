@@ -33,6 +33,7 @@ func _ready() -> void:
 	randomize()
 	self._initialize_signals()
 	self._initialize()
+	return
 
 
 ############################### DECLARE FUNCTIONS ##############################
@@ -47,7 +48,7 @@ func _initialize_signals() -> void:
 
 func on_game_quited() -> void:
 	stop_game()
-	
+	return
 
 
 func stop_game() -> void:
@@ -92,6 +93,8 @@ func on_game_started() -> void:
 	player.set_physics_process(true)
 	score_timer.start()
 	mob_timer.start()
+	
+	return
 
 
 func on_player_defeated() -> void:
@@ -157,6 +160,8 @@ func _on_MobTimer_timeout() -> void:
 	
 	var _velocity: Vector2 = Vector2(rand_range(_mob.min_speed, _mob.max_speed), 0)
 	_mob.linear_velocity = _velocity.rotated(_direction)
+	
+	return
 
 
 func _on_ScoreTimer_timeout() -> void:
