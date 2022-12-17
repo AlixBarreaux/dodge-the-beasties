@@ -39,7 +39,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/player.gd"
 }, {
-"base": "Reference",
+"base": "Button",
 "class": "QuitButton",
 "language": "GDScript",
 "path": "res://scripts/gui/quit_to_desktop_button.gd"
@@ -57,9 +57,6 @@ _global_script_class_icons={
 [application]
 
 config/name="Dodge the Creeps Reloaded"
-config/description="A 2D game where you dodge little aliens.
-
-This is the starter project for the video version of the tutorial published on the GDQuest YouTube channel."
 run/main_scene="res://scenes/Main.tscn"
 config/icon="res://miscellaneous/icon.png"
 config/macos_native_icon="res://Miscellaneous/icon.icns"
