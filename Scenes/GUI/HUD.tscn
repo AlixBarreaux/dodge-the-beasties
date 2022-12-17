@@ -55,7 +55,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
+[node name="PlayButton" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -68,9 +68,6 @@ focus_neighbour_top = NodePath("../QuitToDesktopButton")
 focus_neighbour_bottom = NodePath("../QuitToDesktopButton")
 custom_fonts/font = SubResource( 1 )
 text = "Play"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CreditsButton" parent="." instance=ExtResource( 4 )]
 
@@ -79,12 +76,12 @@ margin_left = -136.0
 margin_top = 192.0
 margin_right = 136.0
 margin_bottom = 218.0
-focus_neighbour_top = NodePath("../Button")
-focus_neighbour_bottom = NodePath("../Button")
+focus_neighbour_top = NodePath("../PlayButton")
+focus_neighbour_bottom = NodePath("../PlayButton")
 
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
