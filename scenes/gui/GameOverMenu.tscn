@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/gui/game_over_menu.gd.gd" type="Script" id=1]
+
+[node name="GameOverMenu" type="Panel"]
+self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -168.0
+margin_top = -121.0
+margin_right = 169.0
+margin_bottom = 121.0
+mouse_filter = 2
+size_flags_vertical = 4
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 35.0
+margin_top = -118.0
+margin_right = -35.0
+margin_bottom = -48.0
+custom_constants/separation = 30
+alignment = 1
+
+[node name="PlayAgainButton" type="Button" parent="HBoxContainer"]
+margin_right = 105.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Play Again"
+
+[node name="QuitToMainMenuButton" type="Button" parent="HBoxContainer"]
+margin_left = 135.0
+margin_right = 267.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Quit to Main Menu"
+
+[connection signal="visibility_changed" from="." to="." method="_on_GameOverMenu_visibility_changed"]
+[connection signal="pressed" from="HBoxContainer/PlayAgainButton" to="." method="_on_PlayAgainButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/QuitToMainMenuButton" to="." method="_on_QuitToMainMenuButton_pressed"]

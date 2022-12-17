@@ -12,37 +12,37 @@ _global_script_classes=[ {
 "base": "AudioStreamPlayer",
 "class": "DeathSoundPlayer",
 "language": "GDScript",
-"path": "res://Scripts/death_sound_player.gd"
+"path": "res://scripts/death_sound_player.gd"
 }, {
 "base": "Panel",
 "class": "GameOverMenu",
 "language": "GDScript",
-"path": "res://Scripts/GUI/game_over_menu.gd.gd"
+"path": "res://scripts/gui/game_over_menu.gd.gd"
 }, {
 "base": "Node",
 "class": "Main",
 "language": "GDScript",
-"path": "res://Scripts/main.gd"
+"path": "res://scripts/main.gd"
 }, {
 "base": "Control",
 "class": "MainMenu",
 "language": "GDScript",
-"path": "res://Scripts/GUI/main_menu.gd"
+"path": "res://scripts/gui/main_menu.gd"
 }, {
 "base": "Control",
 "class": "PauseMenu",
 "language": "GDScript",
-"path": "res://Scripts/GUI/pause_menu.gd"
+"path": "res://scripts/gui/pause_menu.gd"
 }, {
 "base": "Area2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://Scripts/player.gd"
+"path": "res://scripts/player.gd"
 }, {
 "base": "Reference",
 "class": "QuitButton",
 "language": "GDScript",
-"path": "res://Scripts/GUI/quit_to_desktop_button.gd"
+"path": "res://scripts/gui/quit_to_desktop_button.gd"
 } ]
 _global_script_class_icons={
 "DeathSoundPlayer": "",
@@ -60,20 +60,20 @@ config/name="Dodge the Creeps Reloaded"
 config/description="A 2D game where you dodge little aliens.
 
 This is the starter project for the video version of the tutorial published on the GDQuest YouTube channel."
-run/main_scene="res://Scenes/Main.tscn"
-config/icon="res://Miscellaneous/icon.png"
+run/main_scene="res://scenes/Main.tscn"
+config/icon="res://miscellaneous/icon.png"
 config/macos_native_icon="res://Miscellaneous/icon.icns"
 config/windows_native_icon="res://Miscellaneous/icon.ico"
 
 [audio]
 
-default_bus_layout="res://Miscellaneous/default_bus_layout.tres"
+default_bus_layout="res://resources/default_bus_layout.tres"
 
 [autoload]
 
-Settings="*res://Autoloads/settings.gd"
-Events="*res://Autoloads/events.gd"
-Global="*res://Autoloads/global.gd"
+Settings="*res://autoloads/settings.gd"
+Events="*res://autoloads/events.gd"
+Global="*res://autoloads/global.gd"
 
 [display]
 
@@ -193,7 +193,7 @@ move_down={
 
 [locale]
 
-translations=PoolStringArray( "res://Translations/en/gui_translations_en.po", "res://Translations/es/gui_translations_es.po", "res://Translations/fr/gui_translations_fr.po" )
+translations=PoolStringArray( "res://translations/en/gui_translations_en.mo", "res://translations/es/gui_translations_es.mo", "res://translations/fr/gui_translations_fr.mo" )
 
 [physics]
 
@@ -204,4 +204,4 @@ common/enable_pause_aware_picking=true
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_environment="res://Miscellaneous/default_env.tres"
+environment/default_environment="res://resources/default_env.tres"
