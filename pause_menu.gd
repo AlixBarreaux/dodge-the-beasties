@@ -14,9 +14,7 @@ func _ready() -> void:
 
 func _unhandled_key_input(event: InputEventKey) -> void:
 	if not Global.can_pause_menu_show:
-		print("game is over, can't input")
 		return
-	print("Game not over, can input")
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		if $Panel.visible:

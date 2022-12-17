@@ -52,7 +52,6 @@ func on_game_quited() -> void:
 
 
 func stop_game() -> void:
-	print("stop game")
 #	self.score = 0
 	is_high_score_beat = false
 	hud.update_score(self.score)
@@ -99,7 +98,6 @@ func on_game_started() -> void:
 
 
 func on_player_defeated() -> void:
-	print("game over")
 	stop_game()
 	death_sound_player.play()
 	return
