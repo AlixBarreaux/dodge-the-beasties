@@ -4,6 +4,11 @@ class_name PauseMenu
 
 # ----------------- DECLARE VARIABLES -----------------
 
+
+# Node References
+onready var panel: Panel = $Panel
+
+
 # ---------------------- RUN CODE ---------------------
 
 
@@ -17,7 +22,7 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 		return
 	
 	if Input.is_action_just_pressed("ui_cancel"):
-		if $Panel.visible:
+		if panel.visible:
 			get_tree().paused = false
 			self.hide_menu()
 			return
@@ -61,12 +66,12 @@ func _on_QuitToMainMenuButton_pressed() -> void:
 
 
 func show_menu() -> void:
-	$Panel.show()
+	panel.show()
 	self.set_mouse_filter(MOUSE_FILTER_STOP)
 	return
 
 
 func hide_menu() -> void:
-	$Panel.hide()
+	panel.hide()
 	set_mouse_filter(MOUSE_FILTER_IGNORE)
 	return
