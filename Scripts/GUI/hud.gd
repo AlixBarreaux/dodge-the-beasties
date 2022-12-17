@@ -9,10 +9,12 @@ onready var message_panel: Panel = $MessagePanel
 onready var message_label: Label = message_panel.get_node("MessageLabel")
 onready var score_label: Label = $ScoreLabel
 onready var high_score_label: RichTextLabel = $HighScoreLabel
+onready var game_over_menu: Control = $GameOverMenu
 onready var message_timer: Timer = $MessageTimer
-onready var play_button: Button = $MainMenu/VBoxContainer/PlayButton
-onready var credits_button: Button = $MainMenu/VBoxContainer/CreditsButton
-onready var quit_to_desktop_button: Button = $MainMenu/VBoxContainer/QuitToDesktopButton
+onready var main_menu: Control = $MainMenu
+onready var play_button: Button = main_menu.get_node("VBoxContainer/PlayButton")
+onready var credits_button: Button = main_menu.get_node("VBoxContainer/CreditsButton")
+onready var quit_to_desktop_button: Button = main_menu.get_node("VBoxContainer/QuitToDesktopButton")
 
 
 ################################# RUN THE CODE #################################
@@ -34,7 +36,7 @@ func _initialize_signals() -> void:
 
 
 func _initialize() -> void:
-	$GameOverMenu.hide()
+	game_over_menu.hide()
 	return
 
 
@@ -70,7 +72,7 @@ func on_player_defeated() -> void:
 	return
 
 func show_game_over() -> void:
-	$GameOverMenu.show()
+	game_over_menu.show()
 	
 	show_message("Game Over!")
 #	yield(message_timer, "timeout")
@@ -86,7 +88,7 @@ func show_game_over() -> void:
 
 
 func _on_PlayButton_pressed() -> void:
-	$MainMenu.hide()
+	main_menu.hide()
 #	play_button.hide()
 #	credits_button.hide()
 #	quit_to_desktop_button.hide()
