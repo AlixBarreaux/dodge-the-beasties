@@ -5,6 +5,8 @@ class_name PauseMenu
 # ----------------- DECLARE VARIABLES -----------------
 
 
+var is_menu_shown: bool = false
+
 # Node References
 onready var panel: Panel = $Panel
 
@@ -40,7 +42,6 @@ func _initialize() -> void:
 	self.hide_menu()
 	return
 
-var is_menu_shown: bool = false
 
 func _on_IconButton_pressed() -> void:
 	if not Global.can_pause_menu_show:
