@@ -1,7 +1,9 @@
 extends Area2D
+class_name Player
 
 
 ############################### DECLARE VARIABLES ##############################
+
 
 export var current_speed: int = 400
 
@@ -10,12 +12,23 @@ var screen_size = Vector2(0.0, 0.0)
 
 signal hit
 
+# Node References:
+onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+
+
 ################################# RUN THE CODE #################################
 
 
 func _ready() -> void:
+	self._initialize_signals()
 	self.screen_size = get_viewport_rect().size
 	self.hide()
+	return
+
+
+func _initialize_signals() -> void:
+	Events.connect("game_quited", self, "disable")
+	return
 
 
 # REFACTOR INPUTS
@@ -67,16 +80,28 @@ func _physics_process(delta: float) -> void:
 		else:
 			$AnimatedSprite.flip_v = true
 
+
 ############################### DECLARE FUNCTIONS ##############################
+
 
 # Initialize the player
 func start(new_position: Vector2) -> void:
 	self.position = new_position
-	self.show()
-	$CollisionShape2D.disabled = false
+	enable()
 
 
 func _on_Player_body_entered(_body: PhysicsBody2D) -> void:
+	disable()
+	Events.emit_signal("player_defeated")
+
+
+func enable() -> void:
+	self.show()
+	collision_shape_2d.disabled = false
+	return
+
+
+func disable() -> void:
 	self.hide()
-	$CollisionShape2D.set_deferred("disabled", true)
-	self.emit_signal("hit")
+	collision_shape_2d.set_deferred("disabled", true)
+	return

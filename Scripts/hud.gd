@@ -29,6 +29,7 @@ func _ready() -> void:
 
 func _initialize_signals() -> void:
 	Events.connect("main_menu_requested", self, "on_main_menu_requested")
+	Events.connect("player_defeated", self, "on_player_defeated")
 	return
 
 
@@ -63,6 +64,10 @@ func show_message_with_timer(message: String) -> void:
 	message_timer.start()
 	return
 
+
+func on_player_defeated() -> void:
+	show_game_over()
+	return
 
 func show_game_over() -> void:
 	$GameOverMenu.show()

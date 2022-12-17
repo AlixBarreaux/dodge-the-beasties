@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Mob.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/GUI/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Sound/house-in-a-forest-loop.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Assets/Sound/game-over.wav" type="AudioStream" id=6]
+[ext_resource path="res://death_sound_player.gd" type="Script" id=7]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -39,21 +40,20 @@ position = Vector2( 232, 368 )
 [node name="StartTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="StartPosition" type="Position2D" parent="."]
+[node name="PlayerStartingPosition" type="Position2D" parent="."]
 position = Vector2( 232, 368 )
 __meta__ = {
 "_gizmo_extents_": 50.0
 }
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 bus = "Music"
 
-[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+[node name="DeathSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 bus = "SFX"
+script = ExtResource( 7 )
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
-[connection signal="hit" from="Player" to="." method="game_over"]
-[connection signal="hit" from="Player" to="." method="_on_Player_hit"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]

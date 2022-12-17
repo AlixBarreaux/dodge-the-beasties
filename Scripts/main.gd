@@ -5,14 +5,24 @@ extends Node
 
 
 export var mob_scene: PackedScene = null
+# If the game is opened for the first time and no save file is present,
+# the high score is set to this value
 export var default_high_score_value: int = 90
 
 var score: int = 0
 onready var high_score: int = load_high_score()
+var is_high_score_beat: bool = false
 
 
 # Node References:
 onready var hud: CanvasLayer = $HUD
+onready var player: Area2D = $Player
+onready var score_timer: Timer = $ScoreTimer
+onready var mob_timer: Timer = $MobTimer
+onready var music_player: AudioStreamPlayer = $MusicPlayer
+onready var death_sound_player: AudioStreamPlayer = $DeathSoundPlayer
+onready var start_timer: Timer = $StartTimer
+onready var player_starting_position = $PlayerStartingPosition
 
 
 ################################# RUN THE CODE #################################
@@ -28,7 +38,32 @@ func _ready() -> void:
 
 
 func _initialize_signals() -> void:
-	Events.connect("game_started", self, "new_game")
+	Events.connect("game_started", self, "on_game_started")
+	Events.connect("game_quited", self, "on_game_quited")
+	Events.connect("player_defeated", self, "on_player_defeated")
+	return
+
+
+func on_game_quited() -> void:
+	stop_game()
+	
+
+
+func stop_game() -> void:
+	print("stop game")
+#	self.score = 0
+	is_high_score_beat = false
+	hud.update_score(self.score)
+	get_tree().call_group("mobs", "queue_free")
+	player.set_physics_process(false)
+	score_timer.stop()
+	mob_timer.stop()
+	score_timer.stop()
+	music_player.stop()
+	
+	if is_high_score_beat:
+		save_high_score(high_score)
+	
 	return
 
 
@@ -38,33 +73,31 @@ func _initialize() -> void:
 	return
 
 
-func new_game() -> void:
+func on_game_started() -> void:
 	self.score = 0
 	is_high_score_beat = false
 	hud.update_score(self.score)
 	
 	get_tree().call_group("mobs", "queue_free")
-	$Player.set_physics_process(false)
-	$Player.start($StartPosition.position)
+	player.set_physics_process(false)
+	player.start(player_starting_position.position)
 	
-	$StartTimer.start()
-	$Music.play()
+	start_timer.start()
+	music_player.play()
 	
 	hud.show_message_with_timer("Ready Yourself!")
 	
-	yield($StartTimer, "timeout")
-	$Player.set_physics_process(true)
-	$ScoreTimer.start()
-	$MobTimer.start()
+	yield(start_timer, "timeout")
+	player.set_physics_process(true)
+	score_timer.start()
+	mob_timer.start()
 
 
-func game_over() -> void:
-	$ScoreTimer.stop()
-	$Music.stop()
-	$DeathSound.play()
-	
-	if is_high_score_beat:
-		save_high_score(high_score)
+func on_player_defeated() -> void:
+	print("game over")
+	stop_game()
+	death_sound_player.play()
+	return
 
 
 # Save / Load save file
@@ -138,16 +171,7 @@ func _on_ScoreTimer_timeout() -> void:
 	return
 
 
-var is_high_score_beat: bool = false
-
 func compare_score_with_high_score() -> void:
 	if score > high_score:
 		is_high_score_beat = true
 	return
-
-
-func _on_Player_hit() -> void:
-	$ScoreTimer.stop()
-	$MobTimer.stop()
-	hud.show_game_over()
-	
