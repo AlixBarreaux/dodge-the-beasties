@@ -35,17 +35,8 @@ func _initialize_signals() -> void:
 func _physics_process(delta: float) -> void:
 	self.direction = Vector2(0.0, 0.0)
 	
-	if Input.get_action_strength("move_left"):
-		self.direction.x -= 1
-	
-	if Input.get_action_strength("move_right"):
-		self.direction.x += 1
-
-	if Input.get_action_strength("move_up"):
-		self.direction.y -= 1
-	
-	if Input.get_action_strength("move_down"):
-		self.direction.y += 1
+	self.direction.x = Input.get_axis("move_left", "move_right")
+	self.direction.y = Input.get_axis("move_up", "move_down")
 
 	# Player is pressing at least one key
 #	if self.direction.length() > 0:
