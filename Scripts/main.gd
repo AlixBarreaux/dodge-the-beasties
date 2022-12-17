@@ -67,14 +67,19 @@ func game_over() -> void:
 		save_high_score(high_score)
 
 
+# Save / Load save file
+
 const SAVE_FILE_DIRECTORY: String = "user://"
 const SAVE_FILE_PATH: String = SAVE_FILE_DIRECTORY + "save.bin"
 
 func save_high_score(value: int) -> void:
-	print("Saving high score!")
-	
 	var _save_file: File = File.new()
-	_save_file.open(SAVE_FILE_PATH, File.WRITE)
+	var _error = _save_file.open(SAVE_FILE_PATH, File.WRITE)
+	
+	if _error != OK:
+		printerr("(!) ERROR: Couldn't open the save file at path: ", SAVE_FILE_PATH)
+		return
+	
 	_save_file.store_32(value)
 	_save_file.close()
 
@@ -85,10 +90,9 @@ func load_high_score() -> int:
 	var _save_file: File = File.new()
 	
 	if not _save_file.file_exists(SAVE_FILE_PATH):
-		print("The save file doesn't exist! Creating it.")
 		save_high_score(default_high_score_value)
 	
-	var _error = _save_file.open(SAVE_FILE_PATH, File.READ)
+	var _error: int = _save_file.open(SAVE_FILE_PATH, File.READ)
 	
 	
 	if _error != OK:
