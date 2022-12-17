@@ -3,25 +3,36 @@ extends Node
 
 ############################### DECLARE VARIABLES ##############################
 
+
 export var mob_scene: PackedScene = null
 
 var score: int = 0
+var high_score: int = 3
+
+
+# Node References:
+onready var hud: CanvasLayer = $HUD
+
 
 ################################# RUN THE CODE #################################
 
 
 func _ready() -> void:
 	randomize()
-	
-	Events.connect("game_started", self, "new_game")
+	self._initialize_signals()
 
 
 ############################### DECLARE FUNCTIONS ##############################
 
 
+func _initialize_signals() -> void:
+	Events.connect("game_started", self, "new_game")
+	return
+
+
 func new_game() -> void:
 	self.score = 0
-	$HUD.update_score(self.score)
+	hud.update_score(self.score)
 	
 	get_tree().call_group("mobs", "queue_free")
 	$Player.set_physics_process(false)
@@ -30,7 +41,7 @@ func new_game() -> void:
 	$StartTimer.start()
 	$Music.play()
 	
-	$HUD.show_message_with_timer("Ready Yourself!")
+	hud.show_message_with_timer("Ready Yourself!")
 	
 	yield($StartTimer, "timeout")
 	$Player.set_physics_process(true)
@@ -65,11 +76,26 @@ func _on_MobTimer_timeout() -> void:
 
 func _on_ScoreTimer_timeout() -> void:
 	score += 1
-	$HUD.update_score(score)
+	hud.update_score(score)
+	
+	compare_score_with_high_score()
+	
+	if is_high_score_beat:
+		hud.update_high_score(score)
+	
+	return
+
+
+var is_high_score_beat: bool = false
+
+func compare_score_with_high_score() -> void:
+	if score >= high_score:
+		is_high_score_beat = true
+	return
 
 
 func _on_Player_hit() -> void:
 	$ScoreTimer.stop()
 	$MobTimer.stop()
-	$HUD.show_game_over()
+	hud.show_game_over()
 	

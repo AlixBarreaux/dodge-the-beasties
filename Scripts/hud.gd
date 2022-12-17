@@ -8,6 +8,7 @@ extends CanvasLayer
 onready var message_panel: Panel = $MessagePanel
 onready var message_label: Label = message_panel.get_node("MessageLabel")
 onready var score_label: Label = $ScoreLabel
+onready var high_score_label: RichTextLabel = $HighScoreLabel
 onready var message_timer: Timer = $MessageTimer
 onready var play_button: Button = $MainMenu/VBoxContainer/PlayButton
 onready var credits_button: Button = $MainMenu/VBoxContainer/CreditsButton
@@ -43,6 +44,12 @@ func on_main_menu_requested() -> void:
 
 func update_score(score: int) -> void:
 	score_label.text = "Score:  " + str(score)
+	return
+
+
+func update_high_score(high_score: int) -> void:
+	print("update_high_score() triggered")
+	high_score_label.bbcode_text = "[center]High score:  " + str(high_score) + "[/center]"
 	return
 
 
