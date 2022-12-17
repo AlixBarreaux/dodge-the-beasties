@@ -73,25 +73,13 @@ func on_player_defeated() -> void:
 
 func show_game_over() -> void:
 	game_over_menu.show()
-	
 	show_message("Game Over!")
-#	yield(message_timer, "timeout")
-#	message_label.text = "Dodge the Creeps"
-#	message_label.show()
-#	yield(get_tree().create_timer(1.0), "timeout")
-	
 	message_panel.show()
-#	play_button.show()
-#	credits_button.show()
-#	quit_to_desktop_button.show()
 	return
 
 
 func _on_PlayButton_pressed() -> void:
 	main_menu.hide()
-#	play_button.hide()
-#	credits_button.hide()
-#	quit_to_desktop_button.hide()
 	Events.emit_signal("game_started")
 	return
 
