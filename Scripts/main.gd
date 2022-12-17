@@ -5,14 +5,19 @@ extends Node
 
 export var mob_scene: PackedScene = null
 
-var score = 0
+var score: int = 0
 
 ################################# RUN THE CODE #################################
 
+
 func _ready() -> void:
 	randomize()
+	
+	Events.connect("game_started", self, "new_game")
+
 
 ############################### DECLARE FUNCTIONS ##############################
+
 
 func new_game() -> void:
 	self.score = 0
@@ -25,7 +30,7 @@ func new_game() -> void:
 	$StartTimer.start()
 	$Music.play()
 	
-	$HUD.show_message("Ready Yourself!")
+	$HUD.show_message_with_timer("Ready Yourself!")
 	
 	yield($StartTimer, "timeout")
 	$Player.set_physics_process(true)

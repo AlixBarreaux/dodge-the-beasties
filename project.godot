@@ -9,12 +9,24 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Panel",
+"class": "GameOverMenu",
+"language": "GDScript",
+"path": "res://game_over_menu.gd.gd"
+}, {
+"base": "Control",
+"class": "MainMenu",
+"language": "GDScript",
+"path": "res://main_menu.gd"
+}, {
 "base": "Button",
 "class": "QuitButton",
 "language": "GDScript",
 "path": "res://Scripts/quit_to_desktop_button.gd"
 } ]
 _global_script_class_icons={
+"GameOverMenu": "",
+"MainMenu": "",
 "QuitButton": ""
 }
 
@@ -36,6 +48,7 @@ default_bus_layout="res://Miscellaneous/default_bus_layout.tres"
 [autoload]
 
 Settings="*res://Autoloads/settings.gd"
+Events="*res://Autoloads/events.gd"
 
 [display]
 
