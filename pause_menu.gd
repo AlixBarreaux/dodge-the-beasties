@@ -39,9 +39,15 @@ func _initialize() -> void:
 	self.hide_menu()
 	return
 
+var is_menu_shown: bool = false
 
 func _on_IconButton_pressed() -> void:
 	if not Global.can_pause_menu_show:
+		return
+	
+	if is_menu_shown:
+		get_tree().paused = false
+		self.hide_menu()
 		return
 	
 	get_tree().paused = true
@@ -68,10 +74,12 @@ func _on_QuitToMainMenuButton_pressed() -> void:
 func show_menu() -> void:
 	panel.show()
 	self.set_mouse_filter(MOUSE_FILTER_STOP)
+	is_menu_shown = true
 	return
 
 
 func hide_menu() -> void:
 	panel.hide()
 	set_mouse_filter(MOUSE_FILTER_IGNORE)
+	is_menu_shown = false
 	return
