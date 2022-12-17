@@ -5,7 +5,7 @@ extends Node
 
 
 export var mob_scene: PackedScene = null
-export var default_high_score_value: int = 3
+export var default_high_score_value: int = 90
 
 var score: int = 0
 onready var high_score: int = load_high_score()
