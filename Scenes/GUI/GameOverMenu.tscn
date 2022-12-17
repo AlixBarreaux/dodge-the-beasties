@@ -45,5 +45,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Quit to Main Menu"
 
+[connection signal="visibility_changed" from="." to="." method="_on_GameOverMenu_visibility_changed"]
 [connection signal="pressed" from="HBoxContainer/PlayAgainButton" to="." method="_on_PlayAgainButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/QuitToMainMenuButton" to="." method="_on_QuitToMainMenuButton_pressed"]

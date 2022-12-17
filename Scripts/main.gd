@@ -76,6 +76,7 @@ func _initialize() -> void:
 
 
 func on_game_started() -> void:
+	Global.can_pause_menu_show = true
 	self.score = 0
 	is_high_score_beat = false
 	hud.update_score(self.score)

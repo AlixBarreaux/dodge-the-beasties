@@ -24,3 +24,8 @@ func _on_QuitToMainMenuButton_pressed() -> void:
 	self.hide()
 	Events.emit_signal("main_menu_requested")
 	return
+
+
+func _on_GameOverMenu_visibility_changed() -> void:
+	if self.visible:
+		Global.can_pause_menu_show = false

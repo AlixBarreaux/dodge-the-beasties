@@ -13,6 +13,11 @@ func _ready() -> void:
 
 
 func _unhandled_key_input(event: InputEventKey) -> void:
+	if not Global.can_pause_menu_show:
+		print("game is over, can't input")
+		return
+	print("Game not over, can input")
+	
 	if Input.is_action_just_pressed("ui_cancel"):
 		if $Panel.visible:
 			get_tree().paused = false
@@ -33,6 +38,9 @@ func _initialize() -> void:
 
 
 func _on_IconButton_pressed() -> void:
+	if not Global.can_pause_menu_show:
+		return
+	
 	get_tree().paused = true
 	self.show_menu()
 	return
@@ -48,6 +56,8 @@ func _on_QuitToMainMenuButton_pressed() -> void:
 	self.hide_menu()
 	Events.emit_signal("game_quited")
 	Events.emit_signal("main_menu_requested")
+	
+	Global.can_pause_menu_show = false
 	get_tree().paused = false
 	return
 
