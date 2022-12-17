@@ -100,10 +100,10 @@ func load_high_score() -> int:
 		return default_high_score_value
 	
 	
-	var saved_high_score = _save_file.get_32()
+	var _saved_high_score: int = _save_file.get_32()
 	_save_file.close()
 
-	return saved_high_score
+	return _saved_high_score
 
 
 func _on_MobTimer_timeout() -> void:
