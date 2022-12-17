@@ -1,4 +1,5 @@
 extends Node
+class_name Main
 
 
 ############################### DECLARE VARIABLES ##############################
@@ -22,7 +23,7 @@ onready var mob_timer: Timer = $MobTimer
 onready var music_player: AudioStreamPlayer = $MusicPlayer
 onready var death_sound_player: AudioStreamPlayer = $DeathSoundPlayer
 onready var start_timer: Timer = $StartTimer
-onready var player_starting_position = $PlayerStartingPosition
+onready var player_starting_position: Position2D = $PlayerStartingPosition
 
 
 ################################# RUN THE CODE #################################
@@ -107,7 +108,7 @@ const SAVE_FILE_PATH: String = SAVE_FILE_DIRECTORY + "save.bin"
 
 func save_high_score(value: int) -> void:
 	var _save_file: File = File.new()
-	var _error = _save_file.open(SAVE_FILE_PATH, File.WRITE)
+	var _error: int = _save_file.open(SAVE_FILE_PATH, File.WRITE)
 	
 	if _error != OK:
 		printerr("(!) ERROR: Couldn't open the save file at path: ", SAVE_FILE_PATH)
@@ -140,22 +141,22 @@ func load_high_score() -> int:
 
 
 func _on_MobTimer_timeout() -> void:
-	var mob_spawn_location: PathFollow2D = $Path2D/MobSpawnLocation
-	mob_spawn_location.unit_offset = randf()
+	var _mob_spawn_location: PathFollow2D = $Path2D/MobSpawnLocation
+	_mob_spawn_location.unit_offset = randf()
 	
-	var mob = mob_scene.instance()
-	self.add_child(mob)
+	var _mob: Object = mob_scene.instance()
+	self.add_child(_mob)
 	
-	mob.position = mob_spawn_location.position
+	_mob.position = _mob_spawn_location.position
 	
 	# PI/ 2 -> 90 degrees
 	# PI / 4 -> 45
-	var direction = mob_spawn_location.rotation + PI / 2
-	direction += rand_range(- PI / 4, PI / 4)
-	mob.rotation = direction
+	var _direction: float = _mob_spawn_location.rotation + PI / 2
+	_direction += rand_range(- PI / 4, PI / 4)
+	_mob.rotation = _direction
 	
-	var velocity = Vector2(rand_range(mob.min_speed, mob.max_speed), 0)
-	mob.linear_velocity = velocity.rotated(direction)
+	var _velocity: Vector2 = Vector2(rand_range(_mob.min_speed, _mob.max_speed), 0)
+	_mob.linear_velocity = _velocity.rotated(_direction)
 
 
 func _on_ScoreTimer_timeout() -> void:
