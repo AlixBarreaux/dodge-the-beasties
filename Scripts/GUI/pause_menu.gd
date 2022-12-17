@@ -9,6 +9,7 @@ var is_menu_shown: bool = false
 
 # Node References
 onready var panel: Panel = $Panel
+onready var resume_button: Button = $Panel/HBoxContainer/ResumeButton
 
 
 # ---------------------- RUN CODE ---------------------
@@ -76,6 +77,7 @@ func _on_QuitToMainMenuButton_pressed() -> void:
 func show_menu() -> void:
 	panel.show()
 	self.set_mouse_filter(MOUSE_FILTER_STOP)
+	resume_button.grab_focus()
 	is_menu_shown = true
 	return
 
