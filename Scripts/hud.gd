@@ -48,7 +48,6 @@ func update_score(score: int) -> void:
 
 
 func update_high_score(high_score: int) -> void:
-	print("update_high_score() triggered")
 	high_score_label.bbcode_text = "[center]High score:  " + str(high_score) + "[/center]"
 	return
 
