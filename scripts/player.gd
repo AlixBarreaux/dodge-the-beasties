@@ -10,10 +10,13 @@ export var current_speed: int = 400
 var direction: Vector2 = Vector2(0.0, 0.0)
 var screen_size = Vector2(0.0, 0.0)
 
+var eye_target: PhysicsBody2D = null
+
 signal hit
 
 # Node References:
 onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+onready var eye_sprite: Sprite = $EyeSprite
 
 
 ################################# RUN THE CODE #################################
@@ -70,6 +73,13 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite.flip_v = false
 		else:
 			$AnimatedSprite.flip_v = true
+	
+	
+	if self.eye_target != null:
+		if is_instance_valid(self.eye_target):
+			eye_sprite.look_at(self.eye_target.global_position)
+		else:
+			eye_sprite.rotation_degrees = 0
 
 
 ############################### DECLARE FUNCTIONS ##############################
@@ -96,3 +106,12 @@ func disable() -> void:
 	self.hide()
 	collision_shape_2d.set_deferred("disabled", true)
 	return
+
+
+
+
+func _on_MobDetectZone_body_entered(body: PhysicsBody2D) -> void:
+	print(self.name + "Player eye looking at: " + body.name)
+	self.eye_target = body
+	return
+

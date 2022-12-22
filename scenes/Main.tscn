@@ -38,6 +38,7 @@ position = Vector2( 232, 368 )
 [node name="ScoreTimer" type="Timer" parent="."]
 
 [node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [node name="PlayerStartingPosition" type="Position2D" parent="."]
