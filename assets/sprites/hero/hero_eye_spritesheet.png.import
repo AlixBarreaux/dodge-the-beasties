@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hero_eye_opened_dead.png-eae422e3964ee62b62141f02a2651925.stex"
+path="res://.import/hero_eye_spritesheet.png-2d750a3159390cc1186f0256bf0d695b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/hero/hero_eye_opened_dead.png"
-dest_files=[ "res://.import/hero_eye_opened_dead.png-eae422e3964ee62b62141f02a2651925.stex" ]
+source_file="res://assets/sprites/hero/hero_eye_spritesheet.png"
+dest_files=[ "res://.import/hero_eye_spritesheet.png-2d750a3159390cc1186f0256bf0d695b.stex" ]
 
 [params]
 
