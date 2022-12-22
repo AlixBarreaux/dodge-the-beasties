@@ -16,6 +16,7 @@ onready var resume_button: Button = $Panel/HBoxContainer/ResumeButton
 
 
 func _ready() -> void:
+	self._initialize_signals()
 	self._initialize()
 	return
 
@@ -39,8 +40,16 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 
 
 func _initialize() -> void:
-	self.show()
+	self.hide()
 	self.hide_menu()
+	return
+
+
+func _initialize_signals() -> void:
+	Events.connect("game_started", self, "show")
+	Events.connect("game_quited", self, "hide")
+	Events.connect("main_menu_requested", self, "hide")
+	Events.connect("player_defeated", self, "hide")
 	return
 
 
