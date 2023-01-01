@@ -175,7 +175,7 @@ transitions = [ "Move", "Die", SubResource( 19 ) ]
 radius = 81.0247
 
 [node name="Player" type="Area2D"]
-collision_layer = 0
+collision_mask = 2
 script = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -183,7 +183,18 @@ scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
 animation = "Move Right"
 
+[node name="BodySprite" type="Sprite" parent="."]
+position = Vector2( 5, 0 )
+texture = ExtResource( 7 )
+
+[node name="EyeSprite" type="Sprite" parent="."]
+position = Vector2( 0, -17 )
+texture = ExtResource( 6 )
+hframes = 5
+frame = 2
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+self_modulate = Color( 0.0784314, 1, 0, 1 )
 position = Vector2( 0, -6.28249 )
 scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 2 )
@@ -204,16 +215,6 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 9 )
 parameters/Move/blend_position = Vector2( -0.0316957, 3.92857 )
-
-[node name="BodySprite" type="Sprite" parent="."]
-position = Vector2( 5, 0 )
-texture = ExtResource( 7 )
-
-[node name="EyeSprite" type="Sprite" parent="."]
-position = Vector2( 0, -17 )
-texture = ExtResource( 6 )
-hframes = 5
-frame = 2
 
 [node name="MobDetectZone" type="Area2D" parent="."]
 collision_layer = 0
