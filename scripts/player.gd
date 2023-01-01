@@ -6,6 +6,7 @@ class_name Player
 
 
 export var current_speed: int = 400
+var eye_rotation_speed: float = 0.08
 
 var direction: Vector2 = Vector2(0.0, 0.0)
 var screen_size = Vector2(0.0, 0.0)
@@ -77,9 +78,13 @@ func _physics_process(delta: float) -> void:
 	
 	if self.eye_target != null:
 		if is_instance_valid(self.eye_target):
-			eye_sprite.look_at(self.eye_target.global_position)
+			eye_sprite.rotation = lerp_angle(eye_sprite.rotation, 
+			(
+				self.eye_target.global_position - eye_sprite.global_position).normalized().angle(), 
+				eye_rotation_speed
+			)
 		else:
-			eye_sprite.rotation_degrees = 0
+			eye_sprite.rotation = lerp_angle(eye_sprite.rotation, 0.0, eye_rotation_speed)
 
 
 ############################### DECLARE FUNCTIONS ##############################
