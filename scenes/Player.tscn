@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://assets/sprites/player-up-2.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/player-up-1.png" type="Texture" id=2]
@@ -95,6 +95,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 2 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="AnimationNodeAnimation" id=34]
 animation = "Die"
@@ -170,6 +194,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=48]
 resource_name = "Idle"
@@ -237,7 +273,7 @@ resource_name = "Move Up"
 [sub_resource type="Animation" id=13]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodySprite:position")
+tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -246,10 +282,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -258,10 +294,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.0 ]
+"values": [ Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath(".:scale")
+tracks/2/path = NodePath(".:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -269,8 +305,8 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=49]
@@ -304,6 +340,9 @@ min_space = Vector2( -1, -5 )
 max_space = Vector2( 1, 5 )
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id=57]
+animation = "RESET"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=51]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=52]
@@ -312,15 +351,30 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=54]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=59]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=60]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=61]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=62]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=63]
+
 [sub_resource type="AnimationNodeStateMachine" id=8]
 states/Die/node = SubResource( 49 )
-states/Die/position = Vector2( 316, 174 )
+states/Die/position = Vector2( 493, 160 )
 states/Idle/node = SubResource( 50 )
-states/Idle/position = Vector2( 187, 88 )
+states/Idle/position = Vector2( 185, 88 )
 states/Move/node = SubResource( 18 )
-states/Move/position = Vector2( 451, 88 )
-transitions = [ "Idle", "Die", SubResource( 51 ), "Idle", "Move", SubResource( 52 ), "Move", "Idle", SubResource( 53 ), "Move", "Die", SubResource( 54 ) ]
+states/Move/position = Vector2( 493, 24 )
+states/RESET/node = SubResource( 57 )
+states/RESET/position = Vector2( 805, 88 )
+transitions = [ "Idle", "Die", SubResource( 51 ), "Idle", "Move", SubResource( 52 ), "Move", "Idle", SubResource( 53 ), "Move", "Die", SubResource( 54 ), "Die", "RESET", SubResource( 58 ), "RESET", "Idle", SubResource( 59 ), "Idle", "RESET", SubResource( 60 ), "RESET", "Move", SubResource( 61 ), "Move", "RESET", SubResource( 62 ), "RESET", "Die", SubResource( 63 ) ]
 start_node = "Idle"
+graph_offset = Vector2( -88, -28 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=9]
 

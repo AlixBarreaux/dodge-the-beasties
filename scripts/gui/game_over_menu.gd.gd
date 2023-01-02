@@ -4,6 +4,11 @@ class_name GameOverMenu
 
 # ----------------- DECLARE VARIABLES -----------------
 
+
+# Node References
+onready var first_element_to_focus: Button = $HBoxContainer/PlayAgainButton
+
+
 # ---------------------- RUN CODE ---------------------
 
 
@@ -29,3 +34,5 @@ func _on_QuitToMainMenuButton_pressed() -> void:
 func _on_GameOverMenu_visibility_changed() -> void:
 	if self.visible:
 		Global.can_pause_menu_show = false
+		first_element_to_focus.grab_focus()
+	return

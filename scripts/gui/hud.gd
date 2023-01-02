@@ -15,6 +15,7 @@ onready var main_menu: Control = $MainMenu
 onready var play_button: Button = main_menu.get_node("VBoxContainer/PlayButton")
 onready var credits_button: Button = main_menu.get_node("VBoxContainer/CreditsButton")
 onready var quit_to_desktop_button: Button = main_menu.get_node("VBoxContainer/QuitToDesktopButton")
+onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 ################################# RUN THE CODE #################################
@@ -69,7 +70,9 @@ func show_message_with_timer(message: String) -> void:
 
 func on_player_defeated() -> void:
 	show_game_over()
+	animation_player.play("Game Over")
 	return
+
 
 func show_game_over() -> void:
 	game_over_menu.show()

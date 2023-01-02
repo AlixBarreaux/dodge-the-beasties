@@ -31,6 +31,7 @@ custom_constants/separation = 30
 alignment = 1
 
 [node name="PlayAgainButton" type="Button" parent="HBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.72549 )
 margin_right = 105.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
@@ -38,6 +39,7 @@ size_flags_vertical = 3
 text = "Play Again"
 
 [node name="QuitToMainMenuButton" type="Button" parent="HBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.72549 )
 margin_left = 135.0
 margin_right = 267.0
 margin_bottom = 70.0

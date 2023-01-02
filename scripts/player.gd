@@ -76,6 +76,7 @@ func _physics_process(delta: float) -> void:
 	self.direction = self.direction.normalized()
 	
 
+
 	self.position += self.direction * self.current_speed * delta
 	self.position.x = clamp(self.position.x, 0, screen_size.x)
 	self.position.y = clamp(self.position.y, 0, screen_size.y)
@@ -122,36 +123,46 @@ func _physics_process(delta: float) -> void:
 # Initialize the player
 func start(new_position: Vector2) -> void:
 	self.position = new_position
-	enable()
+	self.spawn()
 
 
 func _on_Player_body_entered(_body: PhysicsBody2D) -> void:
 	die()
-	Events.emit_signal("player_defeated")
 
 
 func die() -> void:
+	print(self.name, " die()")
 	animation_node_sm_playback.travel("Die")
-	self.disable()
+	eye_animation_node_sm_playback.travel("Die")
+	Events.emit_signal("player_defeated")
+#	self.disable()
+	return
+
+
+func spawn() -> void:
+	animation_player.play("RESET")
+	eye_animation_player.play("RESET")
+	
+	self.enable()
+	
+	animation_node_sm_playback.travel("Idle")
+	eye_animation_node_sm_playback.travel("Prepare")
+	
 	return
 
 
 func enable() -> void:
-	self.show()
+	print(self.name, " enable()")
 	collision_shape_2d.disabled = false
 	return
 
 
 func disable() -> void:
-	self.hide()
+	print(self.name, " disable()")
 	collision_shape_2d.set_deferred("disabled", true)
 	return
 
 
-
-
 func _on_MobDetectZone_body_entered(body: PhysicsBody2D) -> void:
-	print(self.name + "Player eye looking at: " + body.name)
 	self.eye_target = body
 	return
-
