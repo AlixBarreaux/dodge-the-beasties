@@ -65,7 +65,6 @@ func on_start_timer_timeout() -> void:
 	return
 
 
-# REFACTOR INPUTS
 func _physics_process(delta: float) -> void:
 	self.direction = Vector2(0.0, 0.0)
 	
@@ -99,32 +98,8 @@ func _physics_process(delta: float) -> void:
 
 	animation_tree.set("parameters/Move/blend_position", self.direction)
 	animation_node_sm_playback.travel("Move")
-
 	
-
-#	if self.direction != Vector2(0.0, 0.0):
-#		$AnimatedSprite.play()
-#	else:
-#		$AnimatedSprite.stop()
-#
-#	if self.direction.x != 0:
-#		$AnimatedSprite.animation = "Move Right"
-#		$AnimatedSprite.flip_v = false
-#
-#		if self.direction.x < 0:
-#			$AnimatedSprite.flip_h = true
-#		else:
-#			$AnimatedSprite.flip_h = false
-#
-#
-#	elif self.direction.y != 0:
-#		$AnimatedSprite.animation = "Move Up"
-#
-#		if self.direction.y < 0:
-#			$AnimatedSprite.flip_v = false
-#		else:
-#			$AnimatedSprite.flip_v = true
-	
+	return
 
 
 ############################### DECLARE FUNCTIONS ##############################
