@@ -19,19 +19,48 @@ signal hit
 onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 onready var eye_sprite: Sprite = $EyeSprite
 
+onready var animation_tree: AnimationTree = $AnimationTree
+onready var animation_player: AnimationPlayer = $AnimationPlayer
+onready var animation_node_sm_playback: AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/playback")
+
+onready var eye_animation_tree: AnimationTree = $EyeSprite/AnimationTree
+onready var eye_animation_player: AnimationPlayer = $EyeSprite/AnimationPlayer
+onready var eye_animation_node_sm_playback: AnimationNodeStateMachinePlayback = $EyeSprite/AnimationTree.get("parameters/playback")
+
 
 ################################# RUN THE CODE #################################
 
 
 func _ready() -> void:
 	self._initialize_signals()
-	self.screen_size = get_viewport_rect().size
-	self.hide()
+	self._initialize()
 	return
 
 
 func _initialize_signals() -> void:
 	Events.connect("game_quited", self, "disable")
+	
+	# PLAY BOTH ANIMATION PLAYERS!
+	Events.connect("start_timer_timeout", self, "on_start_timer_timeout")
+	return
+
+
+func _initialize() -> void:
+	self.screen_size = get_viewport_rect().size
+	self.hide()
+	
+	animation_tree.active = true
+	eye_animation_tree.active = true
+	
+	eye_animation_node_sm_playback.travel("Prepare")
+	animation_node_sm_playback.travel("Idle")
+	
+	return
+
+
+func on_start_timer_timeout() -> void:
+	animation_node_sm_playback.travel("Idle")
+	eye_animation_node_sm_playback.travel("Idle")
 	return
 
 
@@ -78,9 +107,9 @@ func _physics_process(delta: float) -> void:
 	
 	if self.eye_target != null:
 		if is_instance_valid(self.eye_target):
-			eye_sprite.rotation = lerp_angle(eye_sprite.rotation, 
+			eye_sprite.rotation = lerp_angle(eye_sprite.rotation,
 			(
-				self.eye_target.global_position - eye_sprite.global_position).normalized().angle(), 
+				self.eye_target.global_position - eye_sprite.global_position).normalized().angle(),
 				eye_rotation_speed
 			)
 		else:
@@ -97,8 +126,14 @@ func start(new_position: Vector2) -> void:
 
 
 func _on_Player_body_entered(_body: PhysicsBody2D) -> void:
-	disable()
+	die()
 	Events.emit_signal("player_defeated")
+
+
+func die() -> void:
+	animation_node_sm_playback.travel("Die")
+	self.disable()
+	return
 
 
 func enable() -> void:
