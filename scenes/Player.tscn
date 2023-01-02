@@ -415,7 +415,7 @@ parameters/playback = SubResource( 37 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 self_modulate = Color( 0.0784314, 1, 0, 1 )
-position = Vector2( 0, -6.28249 )
+position = Vector2( 0, -7 )
 scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 2 )
 
