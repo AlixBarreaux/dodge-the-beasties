@@ -117,7 +117,6 @@ func _on_Player_body_entered(_body: PhysicsBody2D) -> void:
 
 
 func die() -> void:
-	print(self.name, " die()")
 	animation_node_sm_playback.travel("Die")
 	eye_animation_node_sm_playback.travel("Die")
 	Events.emit_signal("player_defeated")
@@ -138,13 +137,11 @@ func spawn() -> void:
 
 
 func enable() -> void:
-	print(self.name, " enable()")
 	collision_shape_2d.disabled = false
 	return
 
 
 func disable() -> void:
-	print(self.name, " disable()")
 	collision_shape_2d.set_deferred("disabled", true)
 	return
 
