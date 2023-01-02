@@ -39,8 +39,7 @@ func _ready() -> void:
 
 func _initialize_signals() -> void:
 	Events.connect("game_quited", self, "disable")
-	
-	# PLAY BOTH ANIMATION PLAYERS!
+	Events.connect("game_started", self, "on_game_started")
 	Events.connect("start_timer_timeout", self, "on_start_timer_timeout")
 	return
 
@@ -52,14 +51,16 @@ func _initialize() -> void:
 	animation_tree.active = true
 	eye_animation_tree.active = true
 	
-	eye_animation_node_sm_playback.travel("Prepare")
+	return
+
+
+func on_game_started() -> void:
+	eye_animation_node_sm_playback.start("Prepare")
 	animation_node_sm_playback.travel("Idle")
-	
 	return
 
 
 func on_start_timer_timeout() -> void:
-	animation_node_sm_playback.travel("Idle")
 	eye_animation_node_sm_playback.travel("Idle")
 	return
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://assets/sprites/player-up-2.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/player-up-1.png" type="Texture" id=2]
@@ -129,26 +129,43 @@ animation = "Happy"
 [sub_resource type="AnimationNodeAnimation" id=40]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=41]
+[sub_resource type="AnimationNodeAnimation" id=72]
 animation = "Prepare"
 
+[sub_resource type="AnimationNodeAnimation" id=64]
+animation = "RESET"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=39]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=42]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=43]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=44]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=45]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=46]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=47]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=55]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=56]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=67]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=68]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=69]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=70]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=71]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=73]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=74]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=75]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=76]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=77]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=78]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=79]
 
 [sub_resource type="AnimationNodeStateMachine" id=36]
 states/Die/node = SubResource( 34 )
@@ -157,11 +174,13 @@ states/Happy/node = SubResource( 35 )
 states/Happy/position = Vector2( 546, 60 )
 states/Idle/node = SubResource( 40 )
 states/Idle/position = Vector2( 124, 223 )
-states/Prepare/node = SubResource( 41 )
+states/Prepare/node = SubResource( 72 )
 states/Prepare/position = Vector2( 124, 60 )
-transitions = [ "Happy", "Die", SubResource( 39 ), "Prepare", "Idle", SubResource( 42 ), "Idle", "Prepare", SubResource( 43 ), "Happy", "Prepare", SubResource( 44 ), "Prepare", "Happy", SubResource( 45 ), "Prepare", "Die", SubResource( 46 ), "Idle", "Die", SubResource( 47 ), "Idle", "Happy", SubResource( 55 ), "Happy", "Idle", SubResource( 56 ) ]
+states/RESET/node = SubResource( 64 )
+states/RESET/position = Vector2( 336, 187 )
+transitions = [ "Happy", "Die", SubResource( 39 ), "Idle", "Die", SubResource( 47 ), "Idle", "Happy", SubResource( 55 ), "Happy", "Idle", SubResource( 56 ), "RESET", "Happy", SubResource( 67 ), "Happy", "RESET", SubResource( 68 ), "Die", "RESET", SubResource( 69 ), "Idle", "RESET", SubResource( 70 ), "RESET", "Idle", SubResource( 71 ), "Prepare", "Idle", SubResource( 73 ), "Prepare", "Die", SubResource( 74 ), "Prepare", "RESET", SubResource( 75 ), "Prepare", "Happy", SubResource( 76 ), "Happy", "Prepare", SubResource( 77 ), "RESET", "Prepare", SubResource( 78 ), "Idle", "Prepare", SubResource( 79 ) ]
 start_node = "Prepare"
-graph_offset = Vector2( -7, 6 )
+graph_offset = Vector2( -193, 3 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=37]
 
