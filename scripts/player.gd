@@ -106,7 +106,6 @@ func _physics_process(delta: float) -> void:
 ############################### DECLARE FUNCTIONS ##############################
 
 
-# Initialize the player
 func start(new_position: Vector2) -> void:
 	self.position = new_position
 	self.spawn()
@@ -120,7 +119,7 @@ func die() -> void:
 	animation_node_sm_playback.travel("Die")
 	eye_animation_node_sm_playback.travel("Die")
 	Events.emit_signal("player_defeated")
-#	self.disable()
+	self.disable()
 	return
 
 
