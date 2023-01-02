@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player-up-2.png-f31a8b06cc6f1cdc2287d26028c163c2.stex"
+path="res://.import/hero_body_spritesheet.png-40b34a1fe6ef918bf43e3121359e0464.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player-up-2.png"
-dest_files=[ "res://.import/player-up-2.png-f31a8b06cc6f1cdc2287d26028c163c2.stex" ]
+source_file="res://assets/sprites/hero/hero_body_spritesheet.png"
+dest_files=[ "res://.import/hero_body_spritesheet.png-40b34a1fe6ef918bf43e3121359e0464.stex" ]
 
 [params]
 

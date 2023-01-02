@@ -93,6 +93,7 @@ func _physics_process(delta: float) -> void:
 
 
 	if self.direction == Vector2(0.0, 0.0):
+		animation_node_sm_playback.travel("Idle")
 		return
 	
 
