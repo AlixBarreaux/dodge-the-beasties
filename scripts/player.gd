@@ -6,7 +6,7 @@ class_name Player
 
 
 export var current_speed: int = 400
-var eye_rotation_speed: float = 0.08
+export var eye_rotation_speed: float = 0.08
 
 var direction: Vector2 = Vector2(0.0, 0.0)
 var screen_size = Vector2(0.0, 0.0)
@@ -72,8 +72,7 @@ func _physics_process(delta: float) -> void:
 	self.direction.x = Input.get_axis("move_left", "move_right")
 	self.direction.y = Input.get_axis("move_up", "move_down")
 
-	# Player is pressing at least one key
-#	if self.direction.length() > 0:
+
 	self.direction = self.direction.normalized()
 	
 
@@ -83,30 +82,6 @@ func _physics_process(delta: float) -> void:
 	self.position.y = clamp(self.position.y, 0, screen_size.y)
 
 
-	if self.direction != Vector2(0.0, 0.0):
-		$AnimatedSprite.play()
-	else:
-		$AnimatedSprite.stop()
-	
-	if self.direction.x != 0:
-		$AnimatedSprite.animation = "Move Right"
-		$AnimatedSprite.flip_v = false
-		
-		if self.direction.x < 0:
-			$AnimatedSprite.flip_h = true
-		else:
-			$AnimatedSprite.flip_h = false
-	
-	
-	elif self.direction.y != 0:
-		$AnimatedSprite.animation = "Move Up"
-		
-		if self.direction.y < 0:
-			$AnimatedSprite.flip_v = false
-		else:
-			$AnimatedSprite.flip_v = true
-	
-	
 	if self.eye_target != null:
 		if is_instance_valid(self.eye_target):
 			eye_sprite.rotation = lerp_angle(eye_sprite.rotation,
@@ -116,6 +91,40 @@ func _physics_process(delta: float) -> void:
 			)
 		else:
 			eye_sprite.rotation = lerp_angle(eye_sprite.rotation, 0.0, eye_rotation_speed)
+
+
+	if self.direction == Vector2(0.0, 0.0):
+		return
+	
+
+	animation_tree.set("parameters/Move/blend_position", self.direction)
+	animation_node_sm_playback.travel("Move")
+
+	
+
+#	if self.direction != Vector2(0.0, 0.0):
+#		$AnimatedSprite.play()
+#	else:
+#		$AnimatedSprite.stop()
+#
+#	if self.direction.x != 0:
+#		$AnimatedSprite.animation = "Move Right"
+#		$AnimatedSprite.flip_v = false
+#
+#		if self.direction.x < 0:
+#			$AnimatedSprite.flip_h = true
+#		else:
+#			$AnimatedSprite.flip_h = false
+#
+#
+#	elif self.direction.y != 0:
+#		$AnimatedSprite.animation = "Move Up"
+#
+#		if self.direction.y < 0:
+#			$AnimatedSprite.flip_v = false
+#		else:
+#			$AnimatedSprite.flip_v = true
+	
 
 
 ############################### DECLARE FUNCTIONS ##############################
