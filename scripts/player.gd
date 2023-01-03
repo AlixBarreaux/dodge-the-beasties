@@ -43,6 +43,15 @@ func _physics_process(delta: float) -> void:
 	self.position.x = clamp(self.position.x, 0, screen_size.x)
 	self.position.y = clamp(self.position.y, 0, screen_size.y)
 
+	if self.eye_target != null:
+		if is_instance_valid(self.eye_target):
+			eye_sprite.rotation = lerp_angle(eye_sprite.rotation,
+			(
+				self.eye_target.global_position - eye_sprite.global_position).normalized().angle(),
+				eye_rotation_speed
+			)
+		else:
+			eye_sprite.rotation = lerp_angle(eye_sprite.rotation, 0.0, eye_rotation_speed)
 
 	if self.direction == Vector2(0.0, 0.0):
 		animation_node_sm_playback.travel("Idle")
@@ -53,15 +62,7 @@ func _physics_process(delta: float) -> void:
 	animation_node_sm_playback.travel("Move")
 	
 	
-	if self.eye_target != null:
-		if is_instance_valid(self.eye_target):
-			eye_sprite.rotation = lerp_angle(eye_sprite.rotation,
-			(
-				self.eye_target.global_position - eye_sprite.global_position).normalized().angle(),
-				eye_rotation_speed
-			)
-		else:
-			eye_sprite.rotation = lerp_angle(eye_sprite.rotation, 0.0, eye_rotation_speed)
+
 
 	return
 
