@@ -57,12 +57,8 @@ func _physics_process(delta: float) -> void:
 		animation_node_sm_playback.travel("Idle")
 		return
 	
-
 	animation_tree.set("parameters/Move/blend_position", self.direction)
 	animation_node_sm_playback.travel("Move")
-	
-	
-
 
 	return
 
