@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/cartoon_squeaky_toy.ogg-ab976dd928559ca95579f056a54ab5bf.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/sound-effects/cartoon_squeaky_toy.ogg"
+dest_files=[ "res://.import/cartoon_squeaky_toy.ogg-ab976dd928559ca95579f056a54ab5bf.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
