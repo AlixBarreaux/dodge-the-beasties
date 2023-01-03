@@ -462,7 +462,6 @@ script = ExtResource( 5 )
 position = Vector2( 5, 0 )
 texture = ExtResource( 1 )
 hframes = 2
-frame = 1
 
 [node name="EyeSprite" type="Sprite" parent="."]
 position = Vector2( 0, -17 )

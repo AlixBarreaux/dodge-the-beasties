@@ -13,7 +13,6 @@ var screen_size = Vector2(0.0, 0.0)
 
 var eye_target: PhysicsBody2D = null
 
-signal hit
 
 # Node References:
 onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -27,6 +26,8 @@ onready var eye_animation_tree: AnimationTree = $EyeSprite/AnimationTree
 onready var eye_animation_player: AnimationPlayer = $EyeSprite/AnimationPlayer
 onready var eye_animation_node_sm_playback: AnimationNodeStateMachinePlayback = $EyeSprite/AnimationTree.get("parameters/playback")
 
+onready var player_controller: Node = $PlayerController
+
 
 ################################# RUN THE CODE #################################
 
@@ -37,10 +38,49 @@ func _ready() -> void:
 	return
 
 
+func _physics_process(delta: float) -> void:
+	self.position += self.direction * self.current_speed * delta
+	self.position.x = clamp(self.position.x, 0, screen_size.x)
+	self.position.y = clamp(self.position.y, 0, screen_size.y)
+
+
+	if self.direction == Vector2(0.0, 0.0):
+		animation_node_sm_playback.travel("Idle")
+		return
+	
+
+	animation_tree.set("parameters/Move/blend_position", self.direction)
+	animation_node_sm_playback.travel("Move")
+	
+	
+	if self.eye_target != null:
+		if is_instance_valid(self.eye_target):
+			eye_sprite.rotation = lerp_angle(eye_sprite.rotation,
+			(
+				self.eye_target.global_position - eye_sprite.global_position).normalized().angle(),
+				eye_rotation_speed
+			)
+		else:
+			eye_sprite.rotation = lerp_angle(eye_sprite.rotation, 0.0, eye_rotation_speed)
+
+	return
+
+
+############################### DECLARE FUNCTIONS ##############################
+
+
+func set_direction(value: Vector2) -> void:
+	self.direction = value
+	return
+
+
 func _initialize_signals() -> void:
 	Events.connect("game_quited", self, "disable")
 	Events.connect("game_started", self, "on_game_started")
 	Events.connect("start_timer_timeout", self, "on_start_timer_timeout")
+	
+	player_controller.connect("input_movement_direction_sent", self, "set_direction")
+	
 	return
 
 
@@ -65,54 +105,15 @@ func on_start_timer_timeout() -> void:
 	return
 
 
-func _physics_process(delta: float) -> void:
-	self.direction = Vector2(0.0, 0.0)
-	
-	self.direction.x = Input.get_axis("move_left", "move_right")
-	self.direction.y = Input.get_axis("move_up", "move_down")
-
-
-	self.direction = self.direction.normalized()
-	
-
-
-	self.position += self.direction * self.current_speed * delta
-	self.position.x = clamp(self.position.x, 0, screen_size.x)
-	self.position.y = clamp(self.position.y, 0, screen_size.y)
-
-
-	if self.eye_target != null:
-		if is_instance_valid(self.eye_target):
-			eye_sprite.rotation = lerp_angle(eye_sprite.rotation,
-			(
-				self.eye_target.global_position - eye_sprite.global_position).normalized().angle(),
-				eye_rotation_speed
-			)
-		else:
-			eye_sprite.rotation = lerp_angle(eye_sprite.rotation, 0.0, eye_rotation_speed)
-
-
-	if self.direction == Vector2(0.0, 0.0):
-		animation_node_sm_playback.travel("Idle")
-		return
-	
-
-	animation_tree.set("parameters/Move/blend_position", self.direction)
-	animation_node_sm_playback.travel("Move")
-	
-	return
-
-
-############################### DECLARE FUNCTIONS ##############################
-
-
 func start(new_position: Vector2) -> void:
 	self.position = new_position
 	self.spawn()
+	return
 
 
 func _on_Player_body_entered(_body: PhysicsBody2D) -> void:
 	die()
+	return
 
 
 func die() -> void:
