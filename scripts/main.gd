@@ -17,7 +17,7 @@ var is_high_score_beat: bool = false
 
 # Node References:
 onready var hud: CanvasLayer = $HUD
-onready var player: Area2D = $Player
+onready var player: KinematicBody2D = $Player
 onready var score_timer: Timer = $ScoreTimer
 onready var mob_timer: Timer = $MobTimer
 onready var music_player: AudioStreamPlayer = $MusicPlayer

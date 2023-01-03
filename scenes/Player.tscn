@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://assets/sprites/hero/hero_body_spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player.gd" type="Script" id=5]
@@ -451,10 +451,13 @@ graph_offset = Vector2( -88, -28 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=9]
 
+[sub_resource type="CircleShape2D" id=80]
+radius = 52.0
+
 [sub_resource type="CircleShape2D" id=20]
 radius = 81.0247
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="KinematicBody2D"]
 collision_mask = 2
 script = ExtResource( 5 )
 
@@ -504,6 +507,18 @@ active = true
 parameters/playback = SubResource( 9 )
 parameters/Move/blend_position = Vector2( 0, 0 )
 
+[node name="HitBox" type="Area2D" parent="."]
+collision_mask = 2
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+self_modulate = Color( 0.776471, 0, 0.909804, 1 )
+position = Vector2( 0, -7 )
+scale = Vector2( 0.5, 0.5 )
+shape = SubResource( 80 )
+
 [node name="MobDetectZone" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
@@ -513,5 +528,5 @@ shape = SubResource( 20 )
 
 [node name="PlayerController" parent="." instance=ExtResource( 8 )]
 
-[connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
 [connection signal="body_entered" from="MobDetectZone" to="." method="_on_MobDetectZone_body_entered"]

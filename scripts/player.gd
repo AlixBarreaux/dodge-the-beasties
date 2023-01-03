@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 class_name Player
 
 
@@ -108,7 +108,7 @@ func start(new_position: Vector2) -> void:
 	return
 
 
-func _on_Player_body_entered(_body: PhysicsBody2D) -> void:
+func _on_HitBox_body_entered(body: PhysicsBody2D) -> void:
 	die()
 	return
 
