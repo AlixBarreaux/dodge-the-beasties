@@ -24,7 +24,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 72, -226 ), Vector2( 72, 276 ) ]
+"values": [ Vector2( 72, -225 ), Vector2( 72, 185 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../GameOverMenu:rect_position")
@@ -36,7 +36,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 72, -263 ), Vector2( 72, 239 ) ]
+"values": [ Vector2( 72, -250 ), Vector2( 72, 160 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("../GameOverMenu/HBoxContainer/PlayAgainButton:disabled")
@@ -198,10 +198,6 @@ wait_time = 2.0
 one_shot = true
 
 [node name="GameOverMenu" parent="." instance=ExtResource( 8 )]
-margin_left = 72.0
-margin_top = 239.0
-margin_right = 409.0
-margin_bottom = 481.0
 theme = ExtResource( 2 )
 
 [node name="MessagePanel" type="Panel" parent="."]

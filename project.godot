@@ -81,9 +81,10 @@ default_bus_layout="res://resources/default_bus_layout.tres"
 
 [autoload]
 
-Settings="*res://autoloads/settings.gd"
-Events="*res://autoloads/events.gd"
-Global="*res://autoloads/global.gd"
+Settings="*res://autoloads/scripts/settings.gd"
+Events="*res://autoloads/scripts/events.gd"
+Global="*res://autoloads/scripts/global.gd"
+MusicPlayer="*res://autoloads/scenes/MusicPlayer.tscn"
 
 [display]
 

@@ -20,7 +20,6 @@ onready var hud: CanvasLayer = $HUD
 onready var player: KinematicBody2D = $Player
 onready var score_timer: Timer = $ScoreTimer
 onready var mob_timer: Timer = $MobTimer
-onready var music_player: AudioStreamPlayer = $MusicPlayer
 onready var death_sound_player: AudioStreamPlayer = $DeathSoundPlayer
 onready var start_timer: Timer = $StartTimer
 onready var player_starting_position: Position2D = $PlayerStartingPosition
@@ -60,7 +59,6 @@ func stop_game() -> void:
 	score_timer.stop()
 	mob_timer.stop()
 	score_timer.stop()
-	music_player.stop()
 	
 	if is_high_score_beat:
 		save_high_score(high_score)
@@ -85,7 +83,6 @@ func on_game_started() -> void:
 	player.start(player_starting_position.position)
 	
 	start_timer.start()
-	music_player.play()
 	
 	hud.show_message_with_timer("Ready Yourself!")
 	

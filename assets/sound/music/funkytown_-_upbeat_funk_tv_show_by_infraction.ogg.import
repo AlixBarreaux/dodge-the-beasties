@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/funkytown_-_upbeat_funk_tv_show_by_infraction.ogg-e2d567087cff73fdaf557ed875c1781c.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/music/funkytown_-_upbeat_funk_tv_show_by_infraction.ogg"
+dest_files=[ "res://.import/funkytown_-_upbeat_funk_tv_show_by_infraction.ogg-e2d567087cff73fdaf557ed875c1781c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
