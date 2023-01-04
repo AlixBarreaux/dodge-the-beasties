@@ -4,8 +4,10 @@ extends AudioStreamPlayer
 
 # ----------------------------- DECLARE VARIABLES -----------------------------
 
+
 const MAIN_MENU_TRACK: String = "res://assets/sound/music/mokkamusic_-_funk_guitar_groove.ogg"
 const IN_GAME_TRACK: String = "res://assets/sound/music/funkytown_-_upbeat_funk_tv_show_by_infraction.ogg"
+
 
 # ---------------------------------- RUN CODE ---------------------------------
 
