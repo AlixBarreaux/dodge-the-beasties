@@ -41,12 +41,18 @@ func _ready() -> void:
 func _initialize_signals() -> void:
 	Events.connect("game_started", self, "on_game_started")
 	Events.connect("game_quited", self, "on_game_quited")
+	Events.connect("main_menu_requested", self, "on_main_menu_requested")
 	Events.connect("player_defeated", self, "on_player_defeated")
 	return
 
 
 func on_game_quited() -> void:
-	stop_game()
+	self.stop_game()
+	return
+
+
+func on_main_menu_requested() -> void:
+	self.stop_game()
 	return
 
 

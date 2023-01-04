@@ -48,8 +48,3 @@ func on_main_menu_requested() -> void:
 	self.show()
 	self.animation_player.play("Active")
 	return
-
-
-
-func _process(delta: float) -> void:
-	print(animation_player.is_playing())
