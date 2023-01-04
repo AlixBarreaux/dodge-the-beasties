@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/heatleybros_level_up_theme_song_8_bit_summer.ogg-9642d4fee88ead6b3582f8be80bbc225.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/music/heatleybros_level_up_theme_song_8_bit_summer.ogg"
+dest_files=[ "res://.import/heatleybros_level_up_theme_song_8_bit_summer.ogg-9642d4fee88ead6b3582f8be80bbc225.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

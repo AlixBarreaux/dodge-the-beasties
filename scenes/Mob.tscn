@@ -51,4 +51,9 @@ shape = SubResource( 2 )
 scale = Vector2( 0.5, 0.5 )
 rect = Rect2( -50, -40, 100, 80 )
 
+[node name="Sprite" type="Sprite" parent="."]
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

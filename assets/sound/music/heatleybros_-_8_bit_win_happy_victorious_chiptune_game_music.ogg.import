@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/heatleybros_-_8_bit_win_happy_victorious_chiptune_game_music.ogg-e526d52bfd79a1bf8311efeb48fc58eb.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/music/heatleybros_-_8_bit_win_happy_victorious_chiptune_game_music.ogg"
+dest_files=[ "res://.import/heatleybros_-_8_bit_win_happy_victorious_chiptune_game_music.ogg-e526d52bfd79a1bf8311efeb48fc58eb.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
