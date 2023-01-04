@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/gui/CreditsButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/main_theme.tres" type="Theme" id=2]
@@ -8,9 +8,66 @@
 [ext_resource path="res://scenes/gui/QuitButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/gui/PauseMenu.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/gui/GameOverMenu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://RichTextLabelGameName.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Active"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/RichTextLabel:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 4.8, 6.1, 7, 8.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 30.0, -30.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control/RichTextLabel:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2.5, 4.8, 6.1, 8.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.25, 1.25 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.25, 1.25 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/RichTextLabel:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control/RichTextLabel:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Game Over"
@@ -61,6 +118,35 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "MainMenuActive"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/RichTextLabel:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 4.8, 6.1, 7, 8.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 30.0, -30.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control/RichTextLabel:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2.5, 4.8, 6.1, 8.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.25, 1.25 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.25, 1.25 ), Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -123,16 +209,14 @@ margin_top = -190.0
 margin_bottom = -160.0
 theme = ExtResource( 2 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-bbcode_enabled = true
-bbcode_text = "[center]Dodge The Creeps
-Reloaded[/center]"
+[node name="RichTextLabel" parent="MainMenu/Control" instance=ExtResource( 9 )]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 2.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 240, 21 )
 text = "Dodge The Creeps
 Reloaded"
-fit_content_height = true
-scroll_active = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
 anchor_right = 1.0
@@ -193,12 +277,23 @@ text = "Version 1.0"
 align = 1
 valign = 1
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu"]
+anims/Active = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
 [node name="GameOverMenu" parent="." instance=ExtResource( 8 )]
+visible = false
 theme = ExtResource( 2 )
+
+[node name="PlayAgainButton" parent="GameOverMenu/HBoxContainer" index="0"]
+disabled = true
+
+[node name="QuitToMainMenuButton" parent="GameOverMenu/HBoxContainer" index="1"]
+disabled = true
 
 [node name="MessagePanel" type="Panel" parent="."]
 visible = false
@@ -208,9 +303,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -168.0
-margin_top = -84.0
+margin_top = -298.0
 margin_right = 169.0
-margin_bottom = -20.0001
+margin_bottom = -234.0
 mouse_filter = 2
 size_flags_vertical = 4
 __meta__ = {
@@ -232,6 +327,7 @@ visible = false
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../MainMenu")
 "anims/Game Over" = SubResource( 2 )
+anims/MainMenuActive = SubResource( 4 )
 anims/RESET = SubResource( 3 )
 
 [connection signal="pressed" from="MainMenu/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]

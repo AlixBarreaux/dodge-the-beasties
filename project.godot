@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/gui/quit_to_desktop_button.gd"
 }, {
+"base": "RichTextLabel",
+"class": "RichTextLabelGameName",
+"language": "GDScript",
+"path": "res://rich_text_label_game_name.gd"
+}, {
 "base": "Timer",
 "class": "StartTimer",
 "language": "GDScript",
@@ -63,6 +68,7 @@ _global_script_class_icons={
 "Player": "",
 "PlayerController": "",
 "QuitButton": "",
+"RichTextLabelGameName": "",
 "StartTimer": ""
 }
 
