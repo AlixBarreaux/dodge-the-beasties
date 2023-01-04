@@ -12,9 +12,6 @@ onready var high_score_label: RichTextLabel = $HighScoreLabel
 onready var game_over_menu: Control = $GameOverMenu
 onready var message_timer: Timer = $MessageTimer
 onready var main_menu: Control = $MainMenu
-onready var play_button: Button = main_menu.get_node("VBoxContainer/PlayButton")
-onready var credits_button: Button = main_menu.get_node("VBoxContainer/CreditsButton")
-onready var quit_to_desktop_button: Button = main_menu.get_node("VBoxContainer/QuitToDesktopButton")
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
