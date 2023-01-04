@@ -68,7 +68,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Dodge the Creeps Reloaded"
+config/name="Dodge the Beasties"
 run/main_scene="res://scenes/Main.tscn"
 config/icon="res://miscellaneous/icon.png"
 config/macos_native_icon="res://Miscellaneous/icon.icns"
