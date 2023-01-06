@@ -52,7 +52,7 @@ _global_script_classes=[ {
 "base": "RichTextLabel",
 "class": "RichTextLabelGameName",
 "language": "GDScript",
-"path": "res://rich_text_label_game_name.gd"
+"path": "res://scripts/gui/rich_text_label_game_name.gd"
 }, {
 "base": "Timer",
 "class": "StartTimer",

@@ -24,7 +24,6 @@ func _ready() -> void:
 func _initialize_signals() -> void:
 	Events.connect("game_started", self, "on_game_started")
 	Events.connect("game_quited", self, "on_game_quited")
-	Events.connect("main_menu_requested", self, "on_main_menu_requested")
 	return
 
 
@@ -44,7 +43,7 @@ func on_game_quited() -> void:
 	return
 
 
-func on_main_menu_requested() -> void:
-	self.show()
-	self.animation_player.play("Active")
+func _on_PlayButton_pressed() -> void:
+	self.hide()
+	Events.emit_signal("game_started")
 	return

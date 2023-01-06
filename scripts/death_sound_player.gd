@@ -16,6 +16,6 @@ func _ready() -> void:
 
 
 func _initialize_signals() -> void:
-	Events.connect("main_menu_requested", self, "stop")
+	Events.connect("game_quited", self, "stop")
 	Events.connect("game_started", self, "stop")
 	return

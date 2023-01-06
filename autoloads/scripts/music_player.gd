@@ -25,7 +25,6 @@ func _initialize_signals() -> void:
 	Events.connect("game_started", self, "play_track", [self.IN_GAME_TRACK])
 	Events.connect("game_quited", self, "play_track", [self.MAIN_MENU_TRACK])
 	Events.connect("player_defeated", self, "stop")
-	Events.connect("main_menu_requested", self, "play_track", [self.MAIN_MENU_TRACK])
 	return
 
 

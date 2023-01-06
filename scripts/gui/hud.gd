@@ -28,7 +28,7 @@ func _ready() -> void:
 
 
 func _initialize_signals() -> void:
-	Events.connect("main_menu_requested", self, "on_main_menu_requested")
+	Events.connect("game_quited", self, "on_game_quited")
 	Events.connect("player_defeated", self, "on_player_defeated")
 	return
 
@@ -38,7 +38,7 @@ func _initialize() -> void:
 	return
 
 
-func on_main_menu_requested() -> void:
+func on_game_quited() -> void:
 	message_panel.hide()
 	return
 
@@ -78,10 +78,10 @@ func show_game_over() -> void:
 	return
 
 
-func _on_PlayButton_pressed() -> void:
-	main_menu.hide()
-	Events.emit_signal("game_started")
-	return
+#func _on_PlayButton_pressed() -> void:
+#	main_menu.hide()
+#	Events.emit_signal("game_started")
+#	return
 
 
 func _on_MessageTimer_timeout() -> void:

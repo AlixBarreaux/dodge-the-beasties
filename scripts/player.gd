@@ -135,11 +135,13 @@ func spawn() -> void:
 
 func enable() -> void:
 	collision_shape_2d.disabled = false
+	self.set_physics_process(true)
 	return
 
 
 func disable() -> void:
 	collision_shape_2d.set_deferred("disabled", true)
+	self.set_physics_process(false)
 	return
 
 

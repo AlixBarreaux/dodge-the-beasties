@@ -9,8 +9,6 @@ signal game_started
 signal game_quited
 # warning-ignore: unused_signal
 signal player_defeated
-# warning-ignore: unused_signal
-signal main_menu_requested
 
 # warning-ignore: unused_signal
 signal start_timer_timeout

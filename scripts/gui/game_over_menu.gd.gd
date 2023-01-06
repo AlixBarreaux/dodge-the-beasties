@@ -27,7 +27,7 @@ func _on_PlayAgainButton_pressed() -> void:
 
 func _on_QuitToMainMenuButton_pressed() -> void:
 	self.hide()
-	Events.emit_signal("main_menu_requested")
+	Events.emit_signal("game_quited")
 	return
 
 

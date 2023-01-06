@@ -48,7 +48,6 @@ func _initialize() -> void:
 func _initialize_signals() -> void:
 	Events.connect("game_started", self, "show")
 	Events.connect("game_quited", self, "hide")
-	Events.connect("main_menu_requested", self, "hide")
 	Events.connect("player_defeated", self, "hide")
 	return
 
@@ -76,7 +75,6 @@ func _on_ResumeButton_pressed() -> void:
 func _on_QuitToMainMenuButton_pressed() -> void:
 	self.hide_menu()
 	Events.emit_signal("game_quited")
-	Events.emit_signal("main_menu_requested")
 	
 	Global.can_pause_menu_show = false
 	get_tree().paused = false
