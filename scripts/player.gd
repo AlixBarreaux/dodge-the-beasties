@@ -72,7 +72,7 @@ func set_direction(value: Vector2) -> void:
 
 
 func _initialize_signals() -> void:
-	Events.connect("game_quited", self, "disable")
+	Events.connect("game_quited", self, "on_game_quited")
 	Events.connect("game_started", self, "on_game_started")
 	Events.connect("start_timer_timeout", self, "on_start_timer_timeout")
 	
@@ -94,6 +94,12 @@ func _initialize() -> void:
 func on_game_started() -> void:
 	eye_animation_node_sm_playback.start("Prepare")
 	animation_node_sm_playback.travel("Idle")
+	return
+
+
+func on_game_quited() -> void:
+	self.disable()
+	self.hide()
 	return
 
 
