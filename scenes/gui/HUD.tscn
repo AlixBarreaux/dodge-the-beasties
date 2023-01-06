@@ -144,10 +144,6 @@ one_shot = true
 
 [node name="GameOverMenu" parent="." instance=ExtResource( 8 )]
 visible = false
-margin_left = 72.0
-margin_top = 239.0
-margin_right = 409.0
-margin_bottom = 481.0
 theme = ExtResource( 2 )
 
 [node name="PlayAgainButton" parent="GameOverMenu/HBoxContainer" index="0"]

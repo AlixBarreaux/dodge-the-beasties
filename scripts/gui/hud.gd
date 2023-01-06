@@ -78,12 +78,6 @@ func show_game_over() -> void:
 	return
 
 
-#func _on_PlayButton_pressed() -> void:
-#	main_menu.hide()
-#	Events.emit_signal("game_started")
-#	return
-
-
 func _on_MessageTimer_timeout() -> void:
 	message_panel.hide()
 	return
