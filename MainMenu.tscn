@@ -110,8 +110,12 @@ custom_constants/separation = 50
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
 margin_right = 338.0
 margin_bottom = 69.0
+focus_neighbour_left = NodePath("../QuitToDesktopButton")
 focus_neighbour_top = NodePath("../QuitToDesktopButton")
-focus_neighbour_bottom = NodePath("../QuitToDesktopButton")
+focus_neighbour_right = NodePath("../CreditsButton")
+focus_neighbour_bottom = NodePath("../CreditsButton")
+focus_next = NodePath("../CreditsButton")
+focus_previous = NodePath("../QuitToDesktopButton")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 7 )
@@ -127,6 +131,11 @@ margin_left = 0.0
 margin_top = 119.0
 margin_right = 338.0
 margin_bottom = 188.0
+focus_neighbour_left = NodePath("../PlayButton")
+focus_neighbour_top = NodePath("../PlayButton")
+focus_neighbour_right = NodePath("../QuitToDesktopButton")
+focus_next = NodePath("../QuitToDesktopButton")
+focus_previous = NodePath("../PlayButton")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 8 )
@@ -141,8 +150,12 @@ margin_left = 0.0
 margin_top = 238.0
 margin_right = 338.0
 margin_bottom = 308.0
-focus_neighbour_top = NodePath("../PlayButton")
+focus_neighbour_left = NodePath("../CreditsButton")
+focus_neighbour_top = NodePath("../CreditsButton")
+focus_neighbour_right = NodePath("../PlayButton")
 focus_neighbour_bottom = NodePath("../PlayButton")
+focus_next = NodePath("../PlayButton")
+focus_previous = NodePath("../CreditsButton")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 9 )
@@ -163,4 +176,5 @@ valign = 1
 anims/Active = SubResource( 5 )
 anims/RESET = SubResource( 6 )
 
+[connection signal="visibility_changed" from="." to="." method="_on_MainMenu_visibility_changed"]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]

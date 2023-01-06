@@ -6,6 +6,7 @@ class_name MainMenu
 
 
 # Node References
+onready var first_element_to_focus: Button = $VBoxContainer/PlayButton
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
@@ -46,4 +47,12 @@ func on_game_quited() -> void:
 func _on_PlayButton_pressed() -> void:
 	self.hide()
 	Events.emit_signal("game_started")
+	return
+
+
+func _on_MainMenu_visibility_changed() -> void:
+	if self.visible:
+		self.first_element_to_focus.grab_focus()
+	else:
+		self.first_element_to_focus.release_focus()
 	return
