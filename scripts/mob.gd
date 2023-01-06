@@ -13,6 +13,9 @@ func _ready() -> void:
 	$AnimatedSprite.play()
 	var mob_types: PoolStringArray = $AnimatedSprite.frames.get_animation_names()
 	$AnimatedSprite.animation = mob_types[randi() % mob_types.size()]
+	
+	Events.connect("game_quited", self, "queue_free")
+	Events.connect("game_started", self, "queue_free")
 
 
 ############################### DECLARE FUNCTIONS ##############################

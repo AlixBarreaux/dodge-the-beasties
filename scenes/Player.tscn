@@ -483,7 +483,7 @@ radius = 52.0
 radius = 81.0247
 
 [node name="Player" type="KinematicBody2D"]
-collision_mask = 2
+collision_mask = 0
 script = ExtResource( 5 )
 
 [node name="BodySprite" type="Sprite" parent="."]

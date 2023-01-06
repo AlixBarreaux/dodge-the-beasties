@@ -54,7 +54,6 @@ func stop_game() -> void:
 #	self.score = 0
 	is_high_score_beat = false
 	hud.update_score(self.score)
-	get_tree().call_group("mobs", "queue_free")
 	score_timer.stop()
 	mob_timer.stop()
 	score_timer.stop()
@@ -77,7 +76,6 @@ func on_game_started() -> void:
 	is_high_score_beat = false
 	hud.update_score(self.score)
 	
-	get_tree().call_group("mobs", "queue_free")
 	player.set_physics_process(false)
 	player.start(player_starting_position.position)
 	

@@ -93,7 +93,7 @@ func _initialize() -> void:
 
 func on_game_started() -> void:
 	eye_animation_node_sm_playback.start("Prepare")
-	animation_node_sm_playback.travel("Idle")
+	animation_node_sm_playback.start("Idle")
 	return
 
 
