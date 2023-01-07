@@ -544,11 +544,11 @@ position = Vector2( 0, -7 )
 scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 80 )
 
-[node name="MobDetectZone" type="Area2D" parent="."]
+[node name="EnemyDetectZone" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MobDetectZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectZone"]
 shape = SubResource( 20 )
 
 [node name="PlayerController" parent="." instance=ExtResource( 8 )]
@@ -557,4 +557,4 @@ shape = SubResource( 20 )
 stream = ExtResource( 2 )
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
-[connection signal="body_entered" from="MobDetectZone" to="." method="_on_MobDetectZone_body_entered"]
+[connection signal="body_entered" from="EnemyDetectZone" to="." method="_on_EnemyDetectZone_body_entered"]

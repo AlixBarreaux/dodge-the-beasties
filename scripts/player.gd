@@ -146,6 +146,6 @@ func disable() -> void:
 	return
 
 
-func _on_MobDetectZone_body_entered(body: PhysicsBody2D) -> void:
+func _on_EnemyDetectZone_body_entered(body: PhysicsBody2D) -> void:
 	self.eye_target = body
 	return

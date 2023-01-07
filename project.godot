@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/death_sound_player.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://scripts/enemy.gd"
+}, {
 "base": "Panel",
 "class": "GameOverMenu",
 "language": "GDScript",
@@ -28,11 +33,6 @@ _global_script_classes=[ {
 "class": "MainMenu",
 "language": "GDScript",
 "path": "res://scripts/gui/main_menu.gd"
-}, {
-"base": "KinematicBody2D",
-"class": "Mob",
-"language": "GDScript",
-"path": "res://scripts/mob.gd"
 }, {
 "base": "Control",
 "class": "PauseMenu",
@@ -66,10 +66,10 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "DeathSoundPlayer": "",
+"Enemy": "",
 "GameOverMenu": "",
 "Main": "",
 "MainMenu": "",
-"Mob": "",
 "PauseMenu": "",
 "Player": "",
 "PlayerController": "",

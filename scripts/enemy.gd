@@ -1,5 +1,5 @@
 extends KinematicBody2D
-class_name Mob
+class_name Enemy
 
 
 ############################### DECLARE VARIABLES ##############################
@@ -21,8 +21,8 @@ onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 func _ready() -> void:
 	$AnimatedSprite.play()
-#	var mob_types: PoolStringArray = $AnimatedSprite.frames.get_animation_names()
-#	$AnimatedSprite.animation = mob_types[randi() % mob_types.size()]
+#	var enemy_types: PoolStringArray = $AnimatedSprite.frames.get_animation_names()
+#	$AnimatedSprite.animation = enemy_types[randi() % enemy_types.size()]
 	self._initialize_signals()
 	self._initialize()
 	

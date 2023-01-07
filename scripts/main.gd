@@ -5,7 +5,7 @@ class_name Main
 # ----------------------------- DECLARE VARIABLES -----------------------------
 
 
-export var mob_scene: PackedScene = null
+export var enemy_scene: PackedScene = null
 # If the game is opened for the first time and no save file is present,
 # the high score is set to this value
 export var default_high_score_value: int = 90
@@ -19,7 +19,7 @@ var is_high_score_beat: bool = false
 onready var hud: CanvasLayer = $HUD
 onready var player: KinematicBody2D = $Player
 onready var score_timer: Timer = $ScoreTimer
-onready var mob_timer: Timer = $MobTimer
+onready var enemy_timer: Timer = $EnemyTimer
 onready var death_sound_player: AudioStreamPlayer = $DeathSoundPlayer
 onready var start_timer: Timer = $StartTimer
 onready var player_starting_position: Position2D = $PlayerStartingPosition
@@ -55,7 +55,7 @@ func stop_game() -> void:
 	is_high_score_beat = false
 	hud.update_score(self.score)
 	score_timer.stop()
-	mob_timer.stop()
+	enemy_timer.stop()
 	score_timer.stop()
 	
 	if is_high_score_beat:
@@ -84,7 +84,7 @@ func on_game_started() -> void:
 	yield(start_timer, "timeout")
 	player.set_physics_process(true)
 	score_timer.start()
-	mob_timer.start()
+	enemy_timer.start()
 	
 	return
 
@@ -135,28 +135,28 @@ func load_high_score() -> int:
 	return _saved_high_score
 
 
-func _on_MobTimer_timeout() -> void:
-	var _mob_spawn_location: PathFollow2D = $Path2D/MobSpawnLocation
-	_mob_spawn_location.unit_offset = randf()
+func _on_EnemyTimer_timeout() -> void:
+	var _enemy_spawn_location: PathFollow2D = $Path2D/EnemySpawnLocation
+	_enemy_spawn_location.unit_offset = randf()
 	
-	var _mob: Object = mob_scene.instance()
-	self.add_child(_mob)
+	var _enemy: Object = enemy_scene.instance()
+	self.add_child(_enemy)
 	
 	
-	# Set mob values
-	_mob.position = _mob_spawn_location.position
+	# Set enemy values
+	_enemy.position = _enemy_spawn_location.position
 	
 	# PI / 2 -> 90 degrees
 	# PI / 4 -> 45
-	var _direction_angle: float = _mob_spawn_location.rotation + PI / 2
+	var _direction_angle: float = _enemy_spawn_location.rotation + PI / 2
 	_direction_angle += rand_range(- PI / 4, PI / 4)
 
 
-	_mob.rotate(_direction_angle)
-	_mob.direction = Vector2(cos(_direction_angle), sin(_direction_angle))
+	_enemy.rotate(_direction_angle)
+	_enemy.direction = Vector2(cos(_direction_angle), sin(_direction_angle))
 	
-	_mob.setup()
-	_mob.enable()
+	_enemy.setup()
+	_enemy.enable()
 	
 	return
 
