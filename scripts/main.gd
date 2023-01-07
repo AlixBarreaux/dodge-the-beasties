@@ -135,11 +135,6 @@ func load_high_score() -> int:
 	return _saved_high_score
 
 
-
-func spawn_mob() -> void:
-	pass
-	return
-
 func _on_MobTimer_timeout() -> void:
 	var _mob_spawn_location: PathFollow2D = $Path2D/MobSpawnLocation
 	_mob_spawn_location.unit_offset = randf()
