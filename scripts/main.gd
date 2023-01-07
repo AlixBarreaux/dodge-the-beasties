@@ -135,6 +135,11 @@ func load_high_score() -> int:
 	return _saved_high_score
 
 
+
+func spawn_mob() -> void:
+	pass
+	return
+
 func _on_MobTimer_timeout() -> void:
 	var _mob_spawn_location: PathFollow2D = $Path2D/MobSpawnLocation
 	_mob_spawn_location.unit_offset = randf()
@@ -142,16 +147,29 @@ func _on_MobTimer_timeout() -> void:
 	var _mob: Object = mob_scene.instance()
 	self.add_child(_mob)
 	
+	
+	# Set mob values
 	_mob.position = _mob_spawn_location.position
 	
-	# PI/ 2 -> 90 degrees
+	# PI / 2 -> 90 degrees
 	# PI / 4 -> 45
-	var _direction: float = _mob_spawn_location.rotation + PI / 2
-	_direction += rand_range(- PI / 4, PI / 4)
-	_mob.rotation = _direction
+	var _direction_angle: float = _mob_spawn_location.rotation + PI / 2
+	_direction_angle += rand_range(- PI / 4, PI / 4)
+#	_mob.rotation = _direction
+
+
+	_mob.rotate(_direction_angle)
+	_mob.velocity = Vector2(cos(_direction_angle) * 200, sin(_direction_angle) * 200)
 	
-	var _velocity: Vector2 = Vector2(rand_range(_mob.min_speed, _mob.max_speed), 0)
-	_mob.linear_velocity = _velocity.rotated(_direction)
+#	_mob.direction = Vector2(cos(_direction_angle), sin(_direction_angle))
+	
+#	_mob.setup()
+	_mob.enable()
+	
+#	var _velocity: Vector2 = Vector2(rand_range(_mob.min_speed, _mob.max_speed), 0)
+#	_mob.linear_velocity = _velocity.rotated(_direction)
+	
+	
 	
 	return
 
