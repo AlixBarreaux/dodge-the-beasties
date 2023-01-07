@@ -108,12 +108,6 @@ func on_start_timer_timeout() -> void:
 	return
 
 
-func start(new_position: Vector2) -> void:
-	self.position = new_position
-	self.spawn()
-	return
-
-
 func _on_HitBox_body_entered(body: PhysicsBody2D) -> void:
 	die()
 	return
@@ -127,7 +121,8 @@ func die() -> void:
 	return
 
 
-func spawn() -> void:
+func spawn(new_position: Vector2) -> void:
+	self.position = new_position
 	animation_player.play("RESET")
 	eye_animation_player.play("RESET")
 	

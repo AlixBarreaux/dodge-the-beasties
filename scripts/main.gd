@@ -75,9 +75,7 @@ func on_game_started() -> void:
 	self.score = 0
 	is_high_score_beat = false
 	hud.update_score(self.score)
-	
-	player.set_physics_process(false)
-	player.start(player_starting_position.position)
+	player.spawn(player_starting_position.position)
 	
 	start_timer.start()
 	
@@ -101,6 +99,7 @@ func on_player_defeated() -> void:
 
 const SAVE_FILE_DIRECTORY: String = "user://"
 const SAVE_FILE_PATH: String = SAVE_FILE_DIRECTORY + "save.bin"
+
 
 func save_high_score(value: int) -> void:
 	var _save_file: File = File.new()
