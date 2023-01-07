@@ -1,21 +1,80 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/gui/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://resources/main_theme.tres" type="Theme" id=2]
-[ext_resource path="res://scripts/gui/credits_button.gd" type="Script" id=3]
+[ext_resource path="res://scenes/gui/RichTextLabelGameName.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/fonts/xolonium-regular.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://scripts/gui/quit_to_desktop_button.gd" type="Script" id=5]
 [ext_resource path="res://scenes/gui/CreditsButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/gui/QuitButton.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
+size = 23
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=7]
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=8]
 font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Active"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/RichTextLabel:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 4.8, 6.1, 7, 8.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 30.0, -30.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control/RichTextLabel:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2.5, 4.8, 6.1, 8.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.25, 1.25 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.25, 1.25 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/RichTextLabel:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control/RichTextLabel:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -31,16 +90,13 @@ margin_top = -190.0
 margin_bottom = -160.0
 theme = ExtResource( 2 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-bbcode_enabled = true
-bbcode_text = "[center]Dodge The Creeps
-Reloaded[/center]"
-text = "[center]Dodge The Creeps
-Reloaded[/center]"
-fit_content_height = true
-scroll_active = false
+[node name="RichTextLabel" parent="Control" instance=ExtResource( 3 )]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 2.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 240, 21 )
+custom_fonts/normal_font = SubResource( 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -54,47 +110,56 @@ custom_constants/separation = 50
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
 margin_right = 338.0
 margin_bottom = 69.0
+focus_neighbour_left = NodePath("../QuitToDesktopButton")
 focus_neighbour_top = NodePath("../QuitToDesktopButton")
-focus_neighbour_bottom = NodePath("../QuitToDesktopButton")
+focus_neighbour_right = NodePath("../CreditsButton")
+focus_neighbour_bottom = NodePath("../CreditsButton")
+focus_next = NodePath("../CreditsButton")
+focus_previous = NodePath("../QuitToDesktopButton")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 7 )
 text = "Play"
 icon_align = 1
 
-[node name="CreditsButton" type="Button" parent="VBoxContainer" instance=ExtResource( 6 )]
+[node name="CreditsButton" parent="VBoxContainer" instance=ExtResource( 6 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
 margin_top = 119.0
 margin_right = 338.0
 margin_bottom = 188.0
-focus_neighbour_top = NodePath("../QuitToDesktopButton")
-focus_neighbour_bottom = NodePath("../QuitToDesktopButton")
+focus_neighbour_left = NodePath("../PlayButton")
+focus_neighbour_top = NodePath("../PlayButton")
+focus_neighbour_right = NodePath("../QuitToDesktopButton")
+focus_next = NodePath("../QuitToDesktopButton")
+focus_previous = NodePath("../PlayButton")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
-text = "Credits"
+custom_fonts/font = SubResource( 8 )
 icon_align = 1
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
 
-[node name="QuitToDesktopButton" type="Button" parent="VBoxContainer" instance=ExtResource( 7 )]
+[node name="QuitToDesktopButton" parent="VBoxContainer" instance=ExtResource( 7 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
 margin_top = 238.0
 margin_right = 338.0
 margin_bottom = 308.0
-focus_neighbour_top = NodePath("../PlayButton")
+focus_neighbour_left = NodePath("../CreditsButton")
+focus_neighbour_top = NodePath("../CreditsButton")
+focus_neighbour_right = NodePath("../PlayButton")
 focus_neighbour_bottom = NodePath("../PlayButton")
+focus_next = NodePath("../PlayButton")
+focus_previous = NodePath("../CreditsButton")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 3 )
-text = "Quit to Desktop"
+custom_fonts/font = SubResource( 9 )
 icon_align = 1
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
 
 [node name="VersionLabel" type="Label" parent="."]
 anchor_top = 1.0
@@ -107,5 +172,9 @@ text = "Version 1.0"
 align = 1
 valign = 1
 
-[connection signal="pressed" from="VBoxContainer/CreditsButton" to="VBoxContainer/CreditsButton" method="_on_CreditsButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitToDesktopButton" to="VBoxContainer/QuitToDesktopButton" method="_on_QuitButton_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Active = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+
+[connection signal="visibility_changed" from="." to="." method="_on_MainMenu_visibility_changed"]
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
