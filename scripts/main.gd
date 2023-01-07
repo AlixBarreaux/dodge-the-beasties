@@ -135,7 +135,8 @@ func load_high_score() -> int:
 	return _saved_high_score
 
 
-var rng = RandomNumberGenerator.new()
+var rng: Object = RandomNumberGenerator.new()
+
 const MIN_ENEMY_SCENE_PATH_NUMBER: int = 1
 const MAX_ENEMY_SCENE_PATH_NUMBER: int = 2
 
@@ -143,6 +144,7 @@ var enemy_scene_path_number: int = 0
 
 const ENEMY_SCENE_PATH_PREFIX: String = "res://scenes/enemy/Enemy"
 const ENEMY_SCENE_PATH_SUFFIX: String = ".tscn"
+
 
 func get_random_enemy_scene_path() -> String:
 	rng.randomize()
