@@ -5,7 +5,6 @@ class_name Main
 # ----------------------------- DECLARE VARIABLES -----------------------------
 
 
-export var enemy_scene: PackedScene = null
 # If the game is opened for the first time and no save file is present,
 # the high score is set to this value
 export var default_high_score_value: int = 90
@@ -17,6 +16,7 @@ var is_high_score_beat: bool = false
 
 # Node References:
 onready var hud: CanvasLayer = $HUD
+onready var _enemy_spawn_location: PathFollow2D = $Path2D/EnemySpawnLocation
 onready var player: KinematicBody2D = $Player
 onready var score_timer: Timer = $ScoreTimer
 onready var enemy_timer: Timer = $EnemyTimer
@@ -135,29 +135,43 @@ func load_high_score() -> int:
 	return _saved_high_score
 
 
+var rng = RandomNumberGenerator.new()
+const MIN_ENEMY_SCENE_PATH_NUMBER: int = 1
+const MAX_ENEMY_SCENE_PATH_NUMBER: int = 2
+
+var enemy_scene_path_number: int = 0
+
+const ENEMY_SCENE_PATH_PREFIX: String = "res://scenes/enemy/Enemy"
+const ENEMY_SCENE_PATH_SUFFIX: String = ".tscn"
+
+func get_random_enemy_scene_path() -> String:
+	rng.randomize()
+	enemy_scene_path_number = rng.randi_range(MIN_ENEMY_SCENE_PATH_NUMBER, MAX_ENEMY_SCENE_PATH_NUMBER)
+	var _enemy_scene_path: String = ENEMY_SCENE_PATH_PREFIX + str(enemy_scene_path_number) + ENEMY_SCENE_PATH_SUFFIX
+	
+	return _enemy_scene_path
+
+
 func _on_EnemyTimer_timeout() -> void:
-	var _enemy_spawn_location: PathFollow2D = $Path2D/EnemySpawnLocation
 	_enemy_spawn_location.unit_offset = randf()
+	var _enemy_instance = load(self.get_random_enemy_scene_path()).instance()
+	self.add_child(_enemy_instance)
 	
-	var _enemy: Object = enemy_scene.instance()
-	self.add_child(_enemy)
-	
-	
-	# Set enemy values
-	_enemy.position = _enemy_spawn_location.position
-	
+	#	# Set enemy values
+	_enemy_instance.position = _enemy_spawn_location.position
+
 	# PI / 2 -> 90 degrees
 	# PI / 4 -> 45
 	var _direction_angle: float = _enemy_spawn_location.rotation + PI / 2
 	_direction_angle += rand_range(- PI / 4, PI / 4)
 
 
-	_enemy.rotate(_direction_angle)
-	_enemy.direction = Vector2(cos(_direction_angle), sin(_direction_angle))
-	
-	_enemy.setup()
-	_enemy.enable()
-	
+	_enemy_instance.rotate(_direction_angle)
+	_enemy_instance.direction = Vector2(cos(_direction_angle), sin(_direction_angle))
+
+	_enemy_instance.setup()
+	_enemy_instance.enable()
+
 	return
 
 
