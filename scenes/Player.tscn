@@ -243,7 +243,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=10]
 resource_name = "Move Down"
-length = 0.8
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodySprite:frame")
@@ -252,7 +252,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 1 ]
@@ -260,7 +260,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "Move Left"
-length = 0.8
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodySprite:flip_h")
@@ -293,7 +293,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 1 ]
@@ -301,7 +301,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=11]
 resource_name = "Move Right"
-length = 0.8
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodySprite:flip_h")
@@ -334,7 +334,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 1 ]
@@ -342,7 +342,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=12]
 resource_name = "Move Up"
-length = 0.8
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodySprite:frame")
@@ -351,7 +351,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 1 ]
@@ -487,8 +487,9 @@ collision_mask = 0
 script = ExtResource( 5 )
 
 [node name="BodySprite" type="Sprite" parent="."]
-position = Vector2( 5, 0 )
+position = Vector2( -6, 0 )
 texture = ExtResource( 1 )
+flip_h = true
 hframes = 2
 
 [node name="EyeSprite" type="Sprite" parent="."]
@@ -543,6 +544,7 @@ self_modulate = Color( 0.776471, 0, 0.909804, 1 )
 position = Vector2( 0, -7 )
 scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 80 )
+disabled = true
 
 [node name="EnemyDetectZone" type="Area2D" parent="."]
 collision_layer = 0
