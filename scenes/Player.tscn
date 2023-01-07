@@ -544,7 +544,6 @@ self_modulate = Color( 0.776471, 0, 0.909804, 1 )
 position = Vector2( 0, -7 )
 scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 80 )
-disabled = true
 
 [node name="EnemyDetectZone" type="Area2D" parent="."]
 collision_layer = 0
