@@ -2,6 +2,12 @@ extends KinematicBody2D
 class_name Enemy
 
 
+# Base Enemy class.
+
+# To create an enemy make sure to:
+# extend this class and follow the instructions at method:
+# enable / _disable_collision_polyshapes
+
 ############################### DECLARE VARIABLES ##############################
 
 
@@ -13,7 +19,7 @@ var direction: Vector2 = Vector2(0.0, 0.0)
 var velocity: Vector2 = Vector2(0.0, 0.0)
 
 # Node References
-onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 ################################# RUN THE CODE #################################
@@ -34,15 +40,15 @@ func _physics_process(_delta: float) -> void:
 ############################### DECLARE FUNCTIONS ##############################
 
 
-func _initialize() -> void:
-	randomize()
-	self.disable()
-	return
-
-
 func _initialize_signals() -> void:
 	Events.connect("game_quited", self, "queue_free")
 	Events.connect("game_started", self, "queue_free")
+	return
+
+
+func _initialize() -> void:
+	randomize()
+	self.disable()
 	return
 
 
@@ -56,10 +62,8 @@ func setup() -> void:
 	return
 
 
-onready var animation_player: AnimationPlayer = $AnimationPlayer
-
 func enable() -> void:
-	collision_shape_2d.disabled = false
+	self._enable_collision_polyshapes()
 	self.set_physics_process(true)
 	self.show()
 	self.animation_player.play("Move")
@@ -67,8 +71,22 @@ func enable() -> void:
 
 
 func disable() -> void:
-	collision_shape_2d.disabled = true
+	self._disable_collision_polyshapes()
 	self.set_physics_process(false)
 	self.hide()
 	self.animation_player.stop()
+	return
+
+
+# Override this to add custom CollisionShape/Polygon2D (s)
+func _enable_collision_polyshapes() -> void:
+	printerr(self.name + "_enable_collision_polyshapes() must be overriden!")
+	printerr("Please add a CollisionShape/Polygon2D to the scene tree and add code into this method to enable it.")
+	return
+
+
+# Override this to add custom CollisionShape/Polygon2D (s)
+func _disable_collision_polyshapes() -> void:
+	printerr(self.name + "_disable_collision_polyshapes() must be overriden!")
+	printerr("Please add a CollisionShape/Polygon2D to the scene tree and add code into this method to disable it.")
 	return

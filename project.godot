@@ -17,7 +17,17 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://scripts/enemy.gd"
+"path": "res://scripts/enemy/enemy.gd"
+}, {
+"base": "Enemy",
+"class": "Enemy1",
+"language": "GDScript",
+"path": "res://scripts/enemy/enemy1.gd"
+}, {
+"base": "Enemy",
+"class": "Enemy2",
+"language": "GDScript",
+"path": "res://scripts/enemy/enemy2.gd"
 }, {
 "base": "Panel",
 "class": "GameOverMenu",
@@ -67,6 +77,8 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "DeathSoundPlayer": "",
 "Enemy": "",
+"Enemy1": "",
+"Enemy2": "",
 "GameOverMenu": "",
 "Main": "",
 "MainMenu": "",

@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/enemy/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/enemies/enemy_1_spritesheet.png" type="Texture" id=2]
+[ext_resource path="res://scripts/enemy/enemy1.gd" type="Script" id=3]
 
 [node name="Enemy1" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
 
-[node name="Sprite" parent="." index="3"]
+[node name="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2"]
+polygon = PoolVector2Array( 31, 0, 30, 6, 25, 14, 18, 20, 4, 26, -10, 30, -3, 0, -10, -30, 5, -27, 15, -22, 23, -15, 29, -8 )
