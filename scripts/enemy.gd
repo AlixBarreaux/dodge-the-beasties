@@ -59,10 +59,13 @@ func setup() -> void:
 	return
 
 
+onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 func enable() -> void:
 	collision_shape_2d.disabled = false
 	self.set_physics_process(true)
 	self.show()
+	self.animation_player.play("Move")
 	return
 
 
@@ -70,4 +73,5 @@ func disable() -> void:
 	collision_shape_2d.disabled = true
 	self.set_physics_process(false)
 	self.hide()
+	self.animation_player.stop()
 	return
