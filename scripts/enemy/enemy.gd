@@ -2,12 +2,6 @@ extends KinematicBody2D
 class_name Enemy
 
 
-# Base Enemy class.
-
-# To create an enemy make sure to:
-# extend this class and follow the instructions at method:
-# enable / _disable_collision_polyshapes
-
 ############################### DECLARE VARIABLES ##############################
 
 
@@ -27,6 +21,7 @@ onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	self._initialize_signals()
+	self.initialize_asserts()
 	self._initialize()
 	
 	return
@@ -43,6 +38,12 @@ func _physics_process(_delta: float) -> void:
 func _initialize_signals() -> void:
 	Events.connect("game_quited", self, "queue_free")
 	Events.connect("game_started", self, "queue_free")
+	return
+
+onready var visibility_notifier_2d: VisibilityNotifier2D = $VisibilityNotifier2D
+func initialize_asserts() -> void:
+	if visibility_notifier_2d.rect == Rect2(0, 0, 0, 0):
+		printerr("(!) ERROR: in " + self.name + ": ", visibility_notifier_2d.name + " 'rect' property must be set!")
 	return
 
 

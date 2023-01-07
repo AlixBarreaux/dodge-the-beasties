@@ -25,8 +25,7 @@ collision_mask = 0
 script = ExtResource( 7 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-scale = Vector2( 0.5, 0.5 )
-rect = Rect2( -50, -40, 100, 80 )
+rect = Rect2( 0, 0, 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="."]
 hframes = 2
