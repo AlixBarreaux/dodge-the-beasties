@@ -155,21 +155,13 @@ func _on_MobTimer_timeout() -> void:
 	# PI / 4 -> 45
 	var _direction_angle: float = _mob_spawn_location.rotation + PI / 2
 	_direction_angle += rand_range(- PI / 4, PI / 4)
-#	_mob.rotation = _direction
 
 
 	_mob.rotate(_direction_angle)
-	_mob.velocity = Vector2(cos(_direction_angle) * 200, sin(_direction_angle) * 200)
+	_mob.direction = Vector2(cos(_direction_angle), sin(_direction_angle))
 	
-#	_mob.direction = Vector2(cos(_direction_angle), sin(_direction_angle))
-	
-#	_mob.setup()
+	_mob.setup()
 	_mob.enable()
-	
-#	var _velocity: Vector2 = Vector2(rand_range(_mob.min_speed, _mob.max_speed), 0)
-#	_mob.linear_velocity = _velocity.rotated(_direction)
-	
-	
 	
 	return
 
