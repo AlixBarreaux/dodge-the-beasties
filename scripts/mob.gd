@@ -3,8 +3,10 @@ extends RigidBody2D
 
 ############################### DECLARE VARIABLES ##############################
 
+
 export var min_speed: int = 150
 export var max_speed: int = 250
+
 
 ################################# RUN THE CODE #################################
 
