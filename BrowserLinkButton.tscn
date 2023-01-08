@@ -9,3 +9,5 @@ margin_bottom = 14.0
 focus_mode = 2
 text = "https://www.youtube.com/watch?v=WEt2JHEe-do"
 script = ExtResource( 1 )
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

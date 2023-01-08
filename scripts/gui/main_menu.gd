@@ -7,6 +7,9 @@ class_name MainMenu
 
 # Node References
 onready var first_element_to_focus: Button = $VBoxContainer/PlayButton
+onready var credits_button: Button = $VBoxContainer/CreditsButton
+onready var credits_menu: Control = $CreditsMenu
+
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
@@ -50,9 +53,21 @@ func _on_PlayButton_pressed() -> void:
 	return
 
 
+func _on_CreditsButton_pressed() -> void:
+	self.credits_menu.show()
+	return
+
+
+
 func _on_MainMenu_visibility_changed() -> void:
 	if self.visible:
 		self.first_element_to_focus.grab_focus()
 	else:
 		self.first_element_to_focus.release_focus()
+	return
+
+
+func _on_CreditsMenu_visibility_changed() -> void:
+	if not self.credits_menu.visible:
+		credits_button.grab_focus()
 	return

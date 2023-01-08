@@ -66,11 +66,17 @@ margin_bottom = 218.0
 alignment = 1
 
 [node name="BrowserLinkButton" parent="Panel/VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
-margin_left = 171.0
-margin_right = 266.0
+margin_left = 125.0
+margin_right = 311.0
 margin_bottom = 20.0
+focus_neighbour_left = NodePath("../../../BackButton")
+focus_neighbour_top = NodePath("../../../BackButton")
+focus_neighbour_right = NodePath("../../../BackButton")
+focus_neighbour_bottom = NodePath("../../../BackButton")
+focus_next = NodePath("../../../BackButton")
+focus_previous = NodePath("../../../BackButton")
 custom_fonts/font = SubResource( 11 )
-text = "Tutorial link"
+text = "Tutorial Link (Youtube)"
 url = "https://www.youtube.com/watch?v=WEt2JHEe-do"
 
 [node name="Label2" type="Label" parent="Panel/VBoxContainer"]
@@ -103,12 +109,12 @@ margin_left = 74.0
 margin_top = -101.0
 margin_right = -68.0
 margin_bottom = -31.0
-focus_neighbour_left = NodePath("../QuitToDesktopButton")
-focus_neighbour_top = NodePath("../QuitToDesktopButton")
-focus_neighbour_right = NodePath("../CreditsButton")
-focus_neighbour_bottom = NodePath("../CreditsButton")
-focus_next = NodePath("../CreditsButton")
-focus_previous = NodePath("../QuitToDesktopButton")
+focus_neighbour_left = NodePath("../VBoxContainer/HBoxContainer/BrowserLinkButton")
+focus_neighbour_top = NodePath("../VBoxContainer/HBoxContainer/BrowserLinkButton")
+focus_neighbour_right = NodePath("../VBoxContainer/HBoxContainer/BrowserLinkButton")
+focus_neighbour_bottom = NodePath("../VBoxContainer/HBoxContainer/BrowserLinkButton")
+focus_next = NodePath("../VBoxContainer/HBoxContainer/BrowserLinkButton")
+focus_previous = NodePath("../VBoxContainer/HBoxContainer/BrowserLinkButton")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 10 )
