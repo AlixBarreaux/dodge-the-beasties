@@ -30,12 +30,7 @@ msgstr ""
 msgid "All the other assets and the code were created by CTN Phaco and are published under an MIT license."
 msgstr ""
 
-msgid "Dodge the Beasties:
-
-
-A game made by CTN Phaco
-
-Based on the tutorial made by the Godot community:"
+msgid "Dodge the Beasties:\n\n\nA game made by CTN Phaco\n\nBased on the tutorial made by the Godot community:"
 msgstr ""
 
 msgid "Game Over!"
@@ -44,11 +39,7 @@ msgstr ""
 msgid "High Score"
 msgstr ""
 
-msgid "List of downloaded assets:
-
-Heatleybros - 8 Bit Win Happy Victorious Chiptune game music
-
-HeatleyBros Level Up theme song 8 Bit Summer"
+msgid "List of downloaded assets:\n\nHeatleybros - 8 Bit Win Happy Victorious Chiptune game music\n\nHeatleyBros Level Up theme song 8 Bit Summer"
 msgstr ""
 
 msgid "Play"
