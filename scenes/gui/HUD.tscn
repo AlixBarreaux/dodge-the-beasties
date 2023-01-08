@@ -117,7 +117,7 @@ size_flags_vertical = 3
 theme = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]High Score:  99999999[/center]"
-text = "High Score:  99999999"
+text = "[center]High Score:  99999999[/center]"
 __meta__ = {
 "_editor_description_": ""
 }
