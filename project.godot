@@ -259,7 +259,7 @@ pointing/emulate_touch_from_mouse=true
 
 [locale]
 
-translations=PoolStringArray( "res://translations/es/gui_translations_es.po", "res://translations/fr/gui_translations_fr.po" )
+translations=PoolStringArray( "res://translations/fr/gui_translations_fr.po" )
 
 [physics]
 
