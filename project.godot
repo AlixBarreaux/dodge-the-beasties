@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "LinkButton",
 "class": "BrowserLinkButton",
 "language": "GDScript",
-"path": "res://browser_link_button.gd"
+"path": "res://scripts/gui/browser_link_button.gd"
 }, {
 "base": "Control",
 "class": "CreditsMenu",
 "language": "GDScript",
-"path": "res://credits_menu.gd"
+"path": "res://scripts/gui/credits_menu.gd"
 }, {
 "base": "AudioStreamPlayer",
 "class": "DeathSoundPlayer",
@@ -67,7 +67,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "PlayerController",
 "language": "GDScript",
-"path": "res://player_controller.gd"
+"path": "res://scripts/player_controller.gd"
 }, {
 "base": "Button",
 "class": "QuitButton",
