@@ -118,7 +118,7 @@ size_flags_vertical = 3
 theme = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]High Score:  99999999[/center]"
-text = "[center]High Score:  99999999[/center]"
+text = "High Score:  99999999"
 __meta__ = {
 "_editor_description_": ""
 }
@@ -146,10 +146,6 @@ one_shot = true
 
 [node name="GameOverMenu" parent="." instance=ExtResource( 8 )]
 visible = false
-margin_left = 72.0
-margin_top = 239.0
-margin_right = 409.0
-margin_bottom = 481.0
 theme = ExtResource( 2 )
 
 [node name="PlayAgainButton" parent="GameOverMenu/HBoxContainer" index="0"]
@@ -165,9 +161,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -168.0
-margin_top = -298.0
+margin_top = -175.0
 margin_right = 169.0
-margin_bottom = -234.0
+margin_bottom = -111.0
 mouse_filter = 2
 size_flags_vertical = 4
 theme = ExtResource( 2 )
@@ -183,6 +179,9 @@ text = "Message Label"
 align = 1
 valign = 1
 autowrap = true
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="PauseMenu" parent="." instance=ExtResource( 7 )]
 visible = false
