@@ -37,8 +37,22 @@ func _ready() -> void:
 	self._initialize()
 	return
 
+var distance_between_click_and_player: float = 0.0
+var mouse_event_global_position: Vector2 = Vector2(0.0, 0.0)
+
+func on_input_movement_mouse_sent(value: Vector2) -> void:
+	self.mouse_event_global_position = value
+	self.distance_between_click_and_player = value.distance_to(get_parent().global_position)
+	return
 
 func _physics_process(delta: float) -> void:
+	print("Dist click player: ", distance_between_click_and_player)
+	if not mouse_event_global_position == Vector2(0.0, 0.0):
+		global_position = global_position.move_toward(mouse_event_global_position, delta * current_speed)
+#	print(global_position)
+	
+	
+	
 	self.position += self.direction * self.current_speed * delta
 	self.position.x = clamp(self.position.x, 0, screen_size.x)
 	self.position.y = clamp(self.position.y, 0, screen_size.y)
@@ -76,6 +90,7 @@ func _initialize_signals() -> void:
 	Events.connect("game_started", self, "on_game_started")
 	Events.connect("start_timer_timeout", self, "on_start_timer_timeout")
 	
+	player_controller.connect("input_movement_mouse_sent", self, "on_input_movement_mouse_sent")
 	player_controller.connect("input_movement_direction_sent", self, "set_direction")
 	
 	return
@@ -83,7 +98,7 @@ func _initialize_signals() -> void:
 
 func _initialize() -> void:
 	self.screen_size = get_viewport_rect().size
-	self.hide()
+#	self.hide()
 	
 	animation_tree.active = true
 	eye_animation_tree.active = true

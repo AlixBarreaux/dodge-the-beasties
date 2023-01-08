@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/sprites/hero/hero_body_spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 241, 265 )
+current_speed = 50
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 237, 106 )
+texture = ExtResource( 1 )
