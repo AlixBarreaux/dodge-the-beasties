@@ -51,22 +51,23 @@ custom_constants/separation = 40
 alignment = 1
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer"]
+margin_top = 11.0
 margin_right = 437.0
-margin_bottom = 158.0
+margin_bottom = 146.0
 text = "Dodge the Beasties:
 
 
 A game made by CTN Phaco
 
-Based on the tutorial made by the Godot community: "
+Based on the tutorial made by the Godot community:"
 align = 1
 valign = 1
 autowrap = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
-margin_top = 198.0
+margin_top = 186.0
 margin_right = 437.0
-margin_bottom = 218.0
+margin_bottom = 206.0
 alignment = 1
 
 [node name="BrowserLinkButton" parent="Panel/VBoxContainer/HBoxContainer" instance=ExtResource( 2 )]
@@ -84,9 +85,9 @@ text = "Tutorial Link (Youtube)"
 url = "https://www.youtube.com/watch?v=WEt2JHEe-do"
 
 [node name="Label2" type="Label" parent="Panel/VBoxContainer"]
-margin_top = 258.0
+margin_top = 246.0
 margin_right = 437.0
-margin_bottom = 393.0
+margin_bottom = 381.0
 text = "List of downloaded assets:
 
 Heatleybros - 8 Bit Win Happy Victorious Chiptune game music
@@ -97,10 +98,10 @@ valign = 1
 autowrap = true
 
 [node name="Label3" type="Label" parent="Panel/VBoxContainer"]
-margin_top = 433.0
+margin_top = 421.0
 margin_right = 437.0
-margin_bottom = 476.0
-text = "All the other assets and the code were created by CTN Phaco and are released under an MIT license."
+margin_bottom = 464.0
+text = "All the other assets and the code were created by CTN Phaco and are published under an MIT license."
 align = 1
 valign = 1
 autowrap = true

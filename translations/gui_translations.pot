@@ -1,0 +1,79 @@
+"Project-Id-Version: Ki Squad Studio\n"
+"Report-Msgid-Bugs-To: Ki Squad Studio\n"
+"POT-Creation-Date: 2022-01-08 11:00+0200\n"
+"PO-Revision-Date: 2022-01-08 11:00+0100\n"
+"Last-Translator: Ki Squad Studio \n"
+"Language-Team: Ki Squad Studio <none@none.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: en\n"
+"X-Poedit-SearchPath-0: .\n"
+
+
+# Translations template file for Dodge the Creepds Reloaded
+# License: MIT License January 8 2023 created by CTN Phaco
+# This file is distributed under the same license as the Dodge the Beasties package.
+# CTN Phaco, 2023.
+msgid ""
+msgstr ""
+
+msgid "Back"
+msgstr ""
+
+msgid "Credits"
+msgstr ""
+
+msgid "All the other assets and the code were created by CTN Phaco and are published under an MIT license."
+msgstr ""
+
+msgid "Dodge the Beasties:
+
+
+A game made by CTN Phaco
+
+Based on the tutorial made by the Godot community:"
+msgstr ""
+
+msgid "Game Over!"
+msgstr ""
+
+msgid "High Score"
+msgstr ""
+
+msgid "List of downloaded assets:
+
+Heatleybros - 8 Bit Win Happy Victorious Chiptune game music
+
+HeatleyBros Level Up theme song 8 Bit Summer"
+msgstr ""
+
+msgid "Play"
+msgstr ""
+
+msgid "Play Again"
+msgstr ""
+
+msgid "Pause"
+msgstr ""
+
+msgid "Quit to Desktop"
+msgstr ""
+
+msgid "Quit to Main Menu"
+msgstr ""
+
+msgid "Ready yourself!"
+msgstr ""
+
+msgid "Resume"
+msgstr ""
+
+msgid "Score"
+msgstr ""
+
+msgid "Tutorial Link (Youtube)"
+msgstr ""

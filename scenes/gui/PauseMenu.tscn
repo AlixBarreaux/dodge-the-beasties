@@ -79,7 +79,7 @@ focus_next = NodePath("../ResumeButton")
 focus_previous = NodePath("../ResumeButton")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Quit to main menu"
+text = "Quit to Main Menu"
 
 [node name="IconButton" type="Button" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )

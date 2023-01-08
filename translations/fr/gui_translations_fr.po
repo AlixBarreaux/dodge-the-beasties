@@ -1,41 +1,75 @@
 # Translations template file for Dodge the Creepds Reloaded
-# License: MIT License June 7 2021 created by CTN Phaco
-# This file is distributed under the same license as the Dodge the Creeps Reloaded package.
-# CTN Phaco, 2021.
-# fuzzy
+# License: MIT License January 8 2023 created by CTN Phaco
+# This file is distributed under the same license as the Dodge the Beasties package.
+# CTN Phaco, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: Dodge the Creeps Reloaded 1.0\n"
-"Report-Msgid-Bugs-To: CTN Phaco\n"
-"POT-Creation-Date: 2021-06-07 11:42+0200\n"
-"PO-Revision-Date: 2021-06-07 14:22+0200\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
 "Last-Translator: \n"
-"Language-Team: en_US\n"
+"Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.1\n"
-"X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Generator: Poedit 3.2.2\n"
 
-# Godot Engine strings
+msgid "Back"
+msgstr "Retour"
+
 msgid "Credits"
 msgstr "Crédits"
+
+msgid ""
+"All the other assets and the code were created by CTN Phaco and are "
+"published under an MIT license."
+msgstr ""
+"Tous les autres assets et le code ont étés créés par CTN Phaco et "
+"sont publiés sous une license MIT."
+
+msgid "Dodge the Beasties"
+msgstr ""
+"Dodge the Beasties:\n"
+"\n"
+"\n"
+"Un jeu créé par CTN Phaco\n"
+"\n"
+"Basé sur le tutoriel créé par la communauté de Godot:"
 
 msgid "Game Over!"
 msgstr "Partie Terminée!"
 
-msgid "Ready Yourself!"
-msgstr "Préparez Vous!"
+msgid "High Score"
+msgstr "Meilleur Score:"
+
+msgid "List of downloaded assets"
+msgstr ""
 
 msgid "Play"
 msgstr "Jouer"
 
-msgid "Quit to Desktop"
-msgstr "Retour vers le Bureau"
+msgid "Play Again"
+msgstr "Rejouer"
 
-# Godot Engine strings
-#~ msgid "Hello World"
-#~ msgstr "Bonjour le monde"
+msgid "Pause"
+msgstr "Pause"
+
+msgid "Quit to Desktop"
+msgstr "Quit vers le Bureau"
+
+msgid "Quit to Main Menu"
+msgstr "Quitter vers le Menu Principal"
+
+msgid "Ready yourself!"
+msgstr "Préparez vous!"
+
+msgid "Resume"
+msgstr "Continuer"
+
+msgid "Score"
+msgstr "Score"
+
+msgid "Tutorial Link (Youtube)"
+msgstr "Lien du Tutoriel (YouTube)"

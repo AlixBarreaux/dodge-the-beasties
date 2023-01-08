@@ -79,7 +79,7 @@ func on_game_started() -> void:
 	
 	start_timer.start()
 	
-	hud.show_message_with_timer("Ready Yourself!")
+	hud.show_message_with_timer("Ready yourself!")
 	
 	yield(start_timer, "timeout")
 	player.set_physics_process(true)
