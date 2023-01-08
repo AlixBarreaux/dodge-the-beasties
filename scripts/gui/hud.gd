@@ -44,12 +44,12 @@ func on_game_quited() -> void:
 
 
 func update_score(score: int) -> void:
-	score_label.text = "Score:  " + str(score)
+	score_label.text = TranslationServer.tr("Score") + ":  " + str(score)
 	return
 
 
 func update_high_score(high_score: int) -> void:
-	high_score_label.bbcode_text = "[center]High score:  " + str(high_score) + "[/center]"
+	high_score_label.bbcode_text = "[center]" + str(TranslationServer.tr("High Score")) + ": " + str(high_score) + "[/center]"
 	return
 
 

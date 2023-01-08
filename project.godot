@@ -109,7 +109,7 @@ run/main_scene="res://scenes/Main.tscn"
 config/icon="res://miscellaneous/icon.png"
 config/macos_native_icon="res://Miscellaneous/icon.icns"
 config/windows_native_icon="res://Miscellaneous/icon.ico"
-config/version="1.0"
+config/version="0.1.0"
 
 [audio]
 

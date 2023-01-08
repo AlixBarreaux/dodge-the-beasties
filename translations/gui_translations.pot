@@ -68,3 +68,6 @@ msgstr ""
 
 msgid "Tutorial Link (Youtube)"
 msgstr ""
+
+msgid "Version"
+msgstr ""

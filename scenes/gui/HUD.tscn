@@ -153,9 +153,12 @@ margin_bottom = 481.0
 theme = ExtResource( 2 )
 
 [node name="PlayAgainButton" parent="GameOverMenu/HBoxContainer" index="0"]
+margin_right = 88.0
 disabled = true
 
 [node name="QuitToMainMenuButton" parent="GameOverMenu/HBoxContainer" index="1"]
+margin_left = 118.0
+margin_right = 269.0
 disabled = true
 
 [node name="MessagePanel" type="Panel" parent="."]
