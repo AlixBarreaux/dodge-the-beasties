@@ -9,6 +9,8 @@ export var current_speed: int = 400
 export var eye_rotation_speed: float = 0.08
 
 var direction: Vector2 = Vector2(0.0, 0.0)
+var velocity: Vector2 = Vector2(0.0, 0.0)
+
 var screen_size = Vector2(0.0, 0.0)
 
 var eye_target: PhysicsBody2D = null
@@ -37,8 +39,11 @@ func _ready() -> void:
 	self._initialize()
 	return
 
+
+# This var is here to fine tune movements later
 var distance_between_click_and_player: float = 0.0
 var mouse_event_global_position: Vector2 = Vector2(0.0, 0.0)
+
 
 func on_input_movement_mouse_sent(value: Vector2) -> void:
 	self.mouse_event_global_position = value
@@ -46,14 +51,9 @@ func on_input_movement_mouse_sent(value: Vector2) -> void:
 	return
 
 
-var velocity: Vector2 = Vector2(0.0, 0.0)
-
 func _physics_process(delta: float) -> void:
-	print(direction)
 	if not mouse_event_global_position == Vector2(0.0, 0.0):
 		direction = (mouse_event_global_position - global_position).normalized()
-#	else:
-#		direction = Vector2(0.0, 0.0)
 		
 	velocity = self.direction * self.current_speed
 	self.move_and_slide(self.velocity)
