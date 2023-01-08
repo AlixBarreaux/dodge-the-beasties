@@ -37,7 +37,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	direction = direction.normalized()
 	
-	print(self.name, " : Direction -> ", direction)
 	emit_signal("input_movement_direction_sent", self.direction)
 	
 	return

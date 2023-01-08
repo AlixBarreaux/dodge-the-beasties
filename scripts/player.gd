@@ -45,15 +45,21 @@ func on_input_movement_mouse_sent(value: Vector2) -> void:
 	self.distance_between_click_and_player = value.distance_to(get_parent().global_position)
 	return
 
+
+var velocity: Vector2 = Vector2(0.0, 0.0)
+
 func _physics_process(delta: float) -> void:
-	print("Dist click player: ", distance_between_click_and_player)
+#	direction = Vector2(0.0, 0.0)
+	
 	if not mouse_event_global_position == Vector2(0.0, 0.0):
-		global_position = global_position.move_toward(mouse_event_global_position, delta * current_speed)
-#	print(global_position)
+		direction = (mouse_event_global_position - global_position).normalized()
+		velocity = direction * current_speed
+		self.move_and_slide(velocity)
+	else:
+		velocity = self.direction * self.current_speed
+		self.move_and_slide(self.velocity)
 	
 	
-	
-	self.position += self.direction * self.current_speed * delta
 	self.position.x = clamp(self.position.x, 0, screen_size.x)
 	self.position.y = clamp(self.position.y, 0, screen_size.y)
 
