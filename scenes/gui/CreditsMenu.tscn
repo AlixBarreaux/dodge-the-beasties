@@ -6,7 +6,7 @@
 [ext_resource path="res://resources/main_theme.tres" type="Theme" id=4]
 
 [sub_resource type="StyleBoxFlat" id=13]
-bg_color = Color( 0.121569, 0.180392, 0.203922, 1 )
+bg_color = Color( 0.0470588, 0.145098, 0.227451, 1 )
 
 [sub_resource type="DynamicFont" id=12]
 size = 25
