@@ -52,7 +52,6 @@ func on_input_movement_mouse_sent(value: Vector2) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	print("Player phy_process")
 	if not mouse_event_global_position == Vector2(0.0, 0.0):
 		direction = (mouse_event_global_position - global_position).normalized()
 
@@ -158,14 +157,12 @@ func spawn(new_position: Vector2) -> void:
 
 
 func enable() -> void:
-	print("Player enable()")
 	collision_shape_2d.disabled = false
 	self.set_physics_process(true)
 	return
 
 
 func disable() -> void:
-	print("Player disable()")
 	collision_shape_2d.set_deferred("disabled", true)
 	self.set_physics_process(false)
 	return
