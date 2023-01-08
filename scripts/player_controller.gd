@@ -23,11 +23,11 @@ func _unhandled_input(event: InputEvent) -> void:
 #	if direction == Vector2(0.0, 0.0):
 
 	if event is InputEventMouseButton or event is InputEventMouseMotion:
-		if Input.is_action_pressed("left_mouse_button") or Input.is_action_pressed("right_mouse_button"):
+		if Input.is_action_pressed("left_mouse_button"):
 			if event.global_position != Vector2(0.0, 0.0):
 				emit_signal("input_movement_mouse_sent", event.global_position)
 			
-		elif Input.is_action_just_released("left_mouse_button") or Input.is_action_just_released("right_mouse_button"):
+		elif Input.is_action_just_released("left_mouse_button"):
 			emit_signal("input_movement_mouse_sent", Vector2(0.0, 0.0))
 		return
 	

@@ -49,15 +49,14 @@ func on_input_movement_mouse_sent(value: Vector2) -> void:
 var velocity: Vector2 = Vector2(0.0, 0.0)
 
 func _physics_process(delta: float) -> void:
-#	direction = Vector2(0.0, 0.0)
-	
+	print(direction)
 	if not mouse_event_global_position == Vector2(0.0, 0.0):
 		direction = (mouse_event_global_position - global_position).normalized()
-		velocity = direction * current_speed
-		self.move_and_slide(velocity)
-	else:
-		velocity = self.direction * self.current_speed
-		self.move_and_slide(self.velocity)
+#	else:
+#		direction = Vector2(0.0, 0.0)
+		
+	velocity = self.direction * self.current_speed
+	self.move_and_slide(self.velocity)
 	
 	
 	self.position.x = clamp(self.position.x, 0, screen_size.x)
