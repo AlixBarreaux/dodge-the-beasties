@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "LinkButton",
+"class": "BrowserLinkButton",
+"language": "GDScript",
+"path": "res://browser_link_button.gd"
+}, {
+"base": "Control",
+"class": "CreditsMenu",
+"language": "GDScript",
+"path": "res://credits_menu.gd"
+}, {
 "base": "AudioStreamPlayer",
 "class": "DeathSoundPlayer",
 "language": "GDScript",
@@ -75,6 +85,8 @@ _global_script_classes=[ {
 "path": "res://scripts/start_timer.gd"
 } ]
 _global_script_class_icons={
+"BrowserLinkButton": "",
+"CreditsMenu": "",
 "DeathSoundPlayer": "",
 "Enemy": "",
 "Enemy1": "",

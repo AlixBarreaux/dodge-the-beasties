@@ -1,0 +1,122 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/fonts/xolonium-regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://credits_menu.gd" type="Script" id=2]
+[ext_resource path="res://BrowserLinkButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/main_theme.tres" type="Theme" id=4]
+
+[sub_resource type="DynamicFont" id=12]
+size = 25
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=10]
+font_data = ExtResource( 1 )
+
+[node name="CreditsMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+
+[node name="TitleLabel" type="Label" parent="Panel"]
+anchor_right = 1.0
+margin_top = 30.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 12 )
+text = "Credits"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -218.0
+margin_top = -259.0
+margin_right = 219.0
+margin_bottom = 217.0
+custom_constants/separation = 40
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+margin_right = 437.0
+margin_bottom = 158.0
+text = "Dodge the Beasties:
+
+
+A game made by CTN Phaco
+
+Based on the tutorial made by the Godot community: "
+align = 1
+valign = 1
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+margin_top = 198.0
+margin_right = 437.0
+margin_bottom = 218.0
+alignment = 1
+
+[node name="BrowserLinkButton" parent="Panel/VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 171.0
+margin_right = 266.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 11 )
+text = "Tutorial link"
+url = "https://www.youtube.com/watch?v=WEt2JHEe-do"
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer"]
+margin_top = 258.0
+margin_right = 437.0
+margin_bottom = 393.0
+text = "List of downloaded assets:
+
+Heatleybros - 8 Bit Win Happy Victorious Chiptune game music
+
+HeatleyBros Level Up theme song 8 Bit Summer"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Label3" type="Label" parent="Panel/VBoxContainer"]
+margin_top = 433.0
+margin_right = 437.0
+margin_bottom = 476.0
+text = "All the other assets and the code were created by CTN Phaco and are released under an MIT license."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="BackButton" type="Button" parent="Panel"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 74.0
+margin_top = -101.0
+margin_right = -68.0
+margin_bottom = -31.0
+focus_neighbour_left = NodePath("../QuitToDesktopButton")
+focus_neighbour_top = NodePath("../QuitToDesktopButton")
+focus_neighbour_right = NodePath("../CreditsButton")
+focus_neighbour_bottom = NodePath("../CreditsButton")
+focus_next = NodePath("../CreditsButton")
+focus_previous = NodePath("../QuitToDesktopButton")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 10 )
+text = "Back"
+icon_align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[connection signal="visibility_changed" from="." to="." method="_on_CreditsMenu_visibility_changed"]
+[connection signal="pressed" from="Panel/BackButton" to="." method="_on_BackButton_pressed"]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://browser_link_button.gd" type="Script" id=1]
+
+[node name="BrowserLinkButton" type="LinkButton"]
+margin_left = 397.0
+margin_right = 397.0
+margin_bottom = 14.0
+focus_mode = 2
+text = "https://www.youtube.com/watch?v=WEt2JHEe-do"
+script = ExtResource( 1 )
