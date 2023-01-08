@@ -52,13 +52,14 @@ func on_input_movement_mouse_sent(value: Vector2) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	print("Player phy_process")
 	if not mouse_event_global_position == Vector2(0.0, 0.0):
 		direction = (mouse_event_global_position - global_position).normalized()
-		
+
 	velocity = self.direction * self.current_speed
 	self.move_and_slide(self.velocity)
-	
-	
+
+
 	self.position.x = clamp(self.position.x, 0, screen_size.x)
 	self.position.y = clamp(self.position.y, 0, screen_size.y)
 
@@ -75,7 +76,7 @@ func _physics_process(delta: float) -> void:
 	if self.direction == Vector2(0.0, 0.0):
 		animation_node_sm_playback.travel("Idle")
 		return
-	
+
 	animation_tree.set("parameters/Move/blend_position", self.direction)
 	animation_node_sm_playback.travel("Move")
 
@@ -103,7 +104,9 @@ func _initialize_signals() -> void:
 
 func _initialize() -> void:
 	self.screen_size = get_viewport_rect().size
-#	self.hide()
+	
+	self.disable()
+	self.hide()
 	
 	animation_tree.active = true
 	eye_animation_tree.active = true
@@ -155,12 +158,14 @@ func spawn(new_position: Vector2) -> void:
 
 
 func enable() -> void:
+	print("Player enable()")
 	collision_shape_2d.disabled = false
 	self.set_physics_process(true)
 	return
 
 
 func disable() -> void:
+	print("Player disable()")
 	collision_shape_2d.set_deferred("disabled", true)
 	self.set_physics_process(false)
 	return
