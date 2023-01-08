@@ -160,7 +160,6 @@ disabled = true
 
 [node name="MessagePanel" type="Panel" parent="."]
 visible = false
-self_modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -171,6 +170,7 @@ margin_right = 169.0
 margin_bottom = -234.0
 mouse_filter = 2
 size_flags_vertical = 4
+theme = ExtResource( 2 )
 __meta__ = {
 "_editor_description_": ""
 }
